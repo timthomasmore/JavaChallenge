@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit {
    back(){
      this.auth = "show";
      this.reset = "hide";
+     this.user.name = '';
+     this.user.password = '';
+     this.user.email = ''
    }
 
   resetPassword(){
