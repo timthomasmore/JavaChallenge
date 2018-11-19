@@ -10,7 +10,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
         CommonModule,
         SharedModule,
         routing,
-        NgxEchartsModule
+        NgxEchartsModule,
     ],
     declarations: [
         ProfileComponent

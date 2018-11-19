@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartsService } from '../../shared/services/charts.service';
 
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
