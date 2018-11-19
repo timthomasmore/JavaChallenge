@@ -1,20 +1,39 @@
-<div class="card card-block login-card">
-  <h3 class="form-label">Welcome Back</h3>
-  <span class="form-label">sign in to continue to Lines</span>
-  <div class="form-group">
-    <div class="input-group">
-      <span class="input-group-addon addon-left" id="username">
-        <i class="fa fa-user fa-fw"></i>
-      </span>
-      <input class="form-control with-primary-addon" placeholder="User Account" type="text">
+<div class="{{auth}}">
+  <div class="card card-block login-card">
+    <h3 class="form-label">Welkom terug</h3>
+    <span class="form-label">Log in om het reward systeem te gebruiken</span>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon addon-left" id="username">
+          <i class="fa fa-user fa-fw"></i>
+        </span>
+        <input class="form-control with-primary-addon" placeholder="User Account" type="text" [(ngModel)]="user.name" />
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon addon-left" id="password">
+          <i class="fa fa-lock fa-fw"></i>
+        </span>
+        <input class="form-control with-primary-addon" placeholder="Password" type="password" [(ngModel)]="user.password" />
+      </div>
+      <button class="btn btn-lg btn-primary" (click)="login()">Login</button>
+      <button class="btn btn-link" (click)="forgotPassword()">Wachtwoord vergeten?</button>
     </div>
-    <div class="input-group">
-      <span class="input-group-addon addon-left" id="password">
-        <i class="fa fa-lock fa-fw"></i>
-      </span>
-      <input class="form-control with-primary-addon" placeholder="Password" type="password">
+  </div>
+</div>
+
+<div class={{reset}}>
+  <div class="card card-block login-card">
+    <h3 class="form-label">Wachtwoord herstellen</h3>
+    <span class="form-label">Geef je email adres op om het wachtwoord te herstellen</span>
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon addon-left" id="email">
+          <i class="fa fa-user fa-fw"></i>
+        </span>
+        <input class="form-control with-primary-addon" placeholder="email" type="email" [(ngModel)]="user.email">
+      </div>
+      <button class="btn btn-lg btn-primary" (click)="resetPassword()">Reset</button>
+      <button class="btn btn-link" (click)="back()">Terug</button>
     </div>
-    <button class="btn btn-lg btn-primary">Login</button>
-    <a href="" class="btn btn-link">Register Now. →</a>
   </div>
 </div>

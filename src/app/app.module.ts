@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { PagesModule } from './pages/pages.module';
 import { routing } from './app.routing';
@@ -11,11 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     PagesModule,
     routing
   ],
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   bootstrap: [AppComponent]
 })
