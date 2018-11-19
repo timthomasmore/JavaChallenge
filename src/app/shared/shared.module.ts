@@ -16,6 +16,8 @@ import { PellEditorComponent } from './components/pell-editor/pell-editor.compon
 import { AlertComponent } from './components/alert/alert.component';
 import { WeatherComponent } from './components/weather/weather.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { SidebarComponent } from './components/profile/sidebar/sidebar.component';
+import { ComparisonBarComponent } from './components/profile/sidebar/comparison-bar/comparison-bar.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     PellEditorComponent,
     AlertComponent,
     WeatherComponent,
-    ProfileComponent
+    ProfileComponent,
+    SidebarComponent,
+    ComparisonBarComponent
   ],
   exports: [
     CardComponent,
@@ -49,7 +53,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     PellEditorComponent,
     AlertComponent,
     WeatherComponent,
-    ProfileComponent
+    ProfileComponent,
+    SidebarComponent,
+    ComparisonBarComponent
   ]
 })
 export class SharedModule { }
