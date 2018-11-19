@@ -1,17 +1,28 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Input} from '@angular/core';
 
 @Injectable()
 export class ChartsService {
+
+  @Input()
+  inputData1 = null;
+  @Input()
+  inputData2 = null;
+
   xAxisData = [];
   data1 = [];
   data2 = [];
   customData = [];
 
   constructor() {
-    for (var i = 0; i < 100; i++) {
-      this.xAxisData.push('Type ' + i);
-      this.data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      this.data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+    if( this.inputData1 === null || this.inputData2 === null) {
+      for (var i = 0; i < 100; i++) {
+        this.xAxisData.push('Type ' + i);
+        this.inputData1 === null ? this.data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5) : this.data1 = this.inputData1;
+        this.inputData2 === null ? this.data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5) : this.data2 = this.inputData2;
+      }
+    } else {
+      this.data1 = this.inputData1;
+      this.data2 = this.inputData2;
     }
   }
 
@@ -92,42 +103,42 @@ export class ChartsService {
     ]
   };
 
-  BarOptionCustom = {
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
-      }
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [
-      {
-        type: 'category',
-        data: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
-        axisTick: {
-          alignWithLabel: true
-        }
-      }
-    ],
-    yAxis: [
-      {
-        type: 'value'
-      }
-    ],
-    series: [
-      {
-        name: 'punten',
-        type: 'bar',
-        barWidth: '60%',
-        data: this.customData
-      }
-    ]
-  };
+  // BarOptionCustom = {
+  //   tooltip: {
+  //     trigger: 'axis',
+  //     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+  //       type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+  //     }
+  //   },
+  //   grid: {
+  //     left: '3%',
+  //     right: '4%',
+  //     bottom: '3%',
+  //     containLabel: true
+  //   },
+  //   xAxis: [
+  //     {
+  //       type: 'category',
+  //       data: ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
+  //       axisTick: {
+  //         alignWithLabel: true
+  //       }
+  //     }
+  //   ],
+  //   yAxis: [
+  //     {
+  //       type: 'value'
+  //     }
+  //   ],
+  //   series: [
+  //     {
+  //       name: 'punten',
+  //       type: 'bar',
+  //       barWidth: '60%',
+  //       data: this.customData
+  //     }
+  //   ]
+  // };
 
   AnimationBarOption = {
     legend: {
@@ -192,10 +203,10 @@ export class ChartsService {
     return this.AnimationBarOption;
   }
 
-  getBarOptionCustom(args) {
-    for (let i = 0; i < args.length; i++) {
-      this.customData.push(args[i]);
-    }
-    return this.BarOptionCustom;
-  }
+  // getBarOptionCustom(args) {
+  //   for (let i = 0; i < args.length; i++) {
+  //     this.customData.push(args[i]);
+  //   }
+  //   return this.BarOptionCustom;
+  // }
 }
