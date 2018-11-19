@@ -1,0 +1,25 @@
+<div>
+  <div class="sidebar">
+    <div class="card sidebar-section">
+      <div class="sidebar-section-content">
+        <comparison-bar [begin]="points.current" [end]="points.previous" [beginText]="'Punten deze maand'" [endText]="'Punten vorige maand'"></comparison-bar>
+      </div>
+    </div>
+
+    <div class="card sidebar-section">
+      <div class="sidebar-section-content">
+        <comparison-bar [begin]="points.current" [end]="points.average" [beginText]="'Punten deze maand'" [endText]="'Gemiddelde per maand'"></comparison-bar>
+      </div>
+    </div>
+
+    <div class="card sidebar-section">
+      <div class="sidebar-section-content">
+        <div class="points-total">
+          <span class="total">Totaal punten</span>
+          <span class="value">{{ points.total }}</span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

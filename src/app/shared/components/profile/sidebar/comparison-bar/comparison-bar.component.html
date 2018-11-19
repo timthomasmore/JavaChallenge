@@ -1,0 +1,23 @@
+<div class="points">
+    <div class="points-begin">
+      <span class="title">{{ beginText }}</span>
+      <span class="value">{{ begin }}</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="progress-lg">
+      <div class="progress">
+        <div class="progress-bar progress-bar-primary" [ngStyle]="{'width': percent + '%'}">
+          <span class="progress-percent" *ngIf="percent">{{percent}}%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="points">
+    <div class="points-end">
+      <span class="title">{{ endText }}</span>
+      <span class="value">{{ end }}</span>
+    </div>
+  </div>
