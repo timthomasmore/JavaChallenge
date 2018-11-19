@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { routing } from './../menu-levels/menu-levels.routing';
+import { routing } from './admin.routing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -9,7 +9,6 @@ import { AdminComponent } from './admin.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AllowrewardsComponent } from './allowrewards/allowrewards.component';
-//import { Levels2Component } from './components/levels-2/levels-2.component';
 
 @NgModule({
     imports: [
@@ -26,4 +25,4 @@ import { AllowrewardsComponent } from './allowrewards/allowrewards.component';
         AllowrewardsComponent
     ]
 })
-export class MenuLevelsModule { }
+export class AdminModule { }

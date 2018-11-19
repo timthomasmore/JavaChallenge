@@ -43,7 +43,7 @@ export let MENU_ITEM = [
         title: 'Beheer activiteiten'
       },
       {
-        path: 'allowreward',
+        path: 'allowrewards',
         title: 'Beloningen'
       }
     ]

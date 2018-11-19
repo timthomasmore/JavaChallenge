@@ -22,6 +22,7 @@ export const childRoutes: Routes = [
       {path: 'table', loadChildren: './table/table.module#TableModule'},
       {path: 'menu-levels', loadChildren: './menu-levels/menu-levels.module#MenuLevelsModule'},
       {path: 'activiteit', loadChildren: './activiteit/activiteit.module#ActiviteitModule'},
+      {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
     ]
   }
 ];
