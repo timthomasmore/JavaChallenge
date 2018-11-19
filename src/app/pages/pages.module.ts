@@ -21,6 +21,6 @@ import { LoginComponent } from './login/login.component';
     declarations: [
         PagesComponent,
         LoginComponent
-    ]
+      ]
 })
 export class PagesModule { }

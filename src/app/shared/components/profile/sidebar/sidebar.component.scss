@@ -11,8 +11,8 @@
             margin: auto;
 
 
-            .points-total {
-                height: 50px;
+            .points-total-lifetime {
+                height: 30px;
 
                 .total {
                     font-size: 12px;
@@ -26,6 +26,27 @@
                     font-weight: bold;
                     position: absolute;
                     top: 13px;
+                    
+                }
+            }
+
+            .points-total-current {
+                text-align: right;
+                height: 30px;
+
+                .total {
+                    font-size: 12px;
+                    color: rgb(100, 100, 100);
+                    margin-right: 5px;
+                }
+    
+                .value {
+                    display: inline-block;
+                    font-size: 22px;
+                    font-weight: bold;
+                    position: absolute;
+                    bottom: 25px;
+                    right: 92px;
                     
                 }
             }

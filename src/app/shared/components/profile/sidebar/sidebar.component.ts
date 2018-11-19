@@ -8,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   points = {
-    current: 65,
-    previous: 130,
-    total: 809,
+    currentMonth: 65,
+    previousMonth: 130,
+    totalLifetime: 809,
+    totalCurrent: 411,
     average: 110
   }
+  
+  percent = Math.round( this.points.currentMonth / this.points.previousMonth * 100 );
 
-  percent = Math.round( this.points.current / this.points.previous * 100 );
+  constructor() { 
 
-  constructor() { }
+  }
 
   ngOnInit() {
   }
