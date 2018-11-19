@@ -14,21 +14,6 @@ export let MENU_ITEM = [
         title: 'Shop',
         icon: 'diamond'
     },
-    {
-        path: 'menu-levels',
-        title: 'Menu levels',
-        icon: 'check-square-o',
-      children: [
-        {
-          path: 'levels1',
-          title: 'Level 1'
-        },
-        {
-          path: 'levels2',
-          title: 'Level 2'
-        }
-      ]
-    },
   {
     path: 'activiteit',
     title: 'Activiteit',
@@ -41,6 +26,25 @@ export let MENU_ITEM = [
       {
         path: 'toevoegen',
         title: 'Toevoegen'
+      }
+    ]
+  },
+  {
+    path: 'admin',
+    title: 'Admin',
+    icon: 'edit',
+    children: [
+      {
+        path: 'rewards',
+        title: 'Beheer shop'
+      },
+      {
+        path: 'activities',
+        title: 'Beheer activiteiten'
+      },
+      {
+        path: 'allowreward',
+        title: 'Beloningen'
       }
     ]
   },
