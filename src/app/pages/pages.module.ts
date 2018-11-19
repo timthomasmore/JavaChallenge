@@ -8,7 +8,6 @@ import { SharedModule } from '../shared/shared.module';
 /* components */
 import { PagesComponent } from './pages.component';
 import { LoginComponent } from './login/login.component';
-import { ShopComponent } from './shop/shop.component';
 
 @NgModule({
     imports: [
@@ -21,8 +20,7 @@ import { ShopComponent } from './shop/shop.component';
     ],
     declarations: [
         PagesComponent,
-        LoginComponent,
-        ShopComponent
-    ]
+        LoginComponent
+      ]
 })
 export class PagesModule { }
