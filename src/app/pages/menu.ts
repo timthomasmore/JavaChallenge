@@ -5,7 +5,7 @@ export let MENU_ITEM = [
         icon: 'dashboard'
     },
     {
-        path: 'profiel',
+        path: 'profile',
         title: 'Profiel',
         icon: 'user'
     },
@@ -15,20 +15,35 @@ export let MENU_ITEM = [
         icon: 'diamond'
     },
     {
-        path: 'activiteit',
-        title: 'Activiteit',
+        path: 'menu-levels',
+        title: 'Menu levels',
         icon: 'check-square-o',
       children: [
         {
-          path: 'historiek',
-          title: 'Historiek'
+          path: 'levels1',
+          title: 'Level 1'
         },
         {
-          path: 'toevoegen',
-          title: 'Toevoegen'
+          path: 'levels2',
+          title: 'Level 2'
         }
       ]
     },
+  {
+    path: 'activiteit',
+    title: 'Activiteit',
+    icon: 'check-square-o',
+    children: [
+      {
+        path: 'historiek',
+        title: 'Historiek'
+      },
+      {
+        path: 'toevoegen',
+        title: 'Toevoegen'
+      }
+    ]
+  },
     {
         path: 'ui',
         title: 'UI Element',
