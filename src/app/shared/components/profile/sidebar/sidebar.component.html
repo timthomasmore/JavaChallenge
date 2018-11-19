@@ -2,21 +2,33 @@
   <div class="sidebar">
     <div class="card sidebar-section">
       <div class="sidebar-section-content">
-        <comparison-bar [begin]="points.current" [end]="points.previous" [beginText]="'Punten deze maand'" [endText]="'Punten vorige maand'"></comparison-bar>
+        <comparison-bar [begin]="points.currentMonth" [end]="points.previousMonth" [beginText]="'Punten deze maand'" [endText]="'Punten vorige maand'"></comparison-bar>
       </div>
     </div>
 
     <div class="card sidebar-section">
       <div class="sidebar-section-content">
-        <comparison-bar [begin]="points.current" [end]="points.average" [beginText]="'Punten deze maand'" [endText]="'Gemiddelde per maand'"></comparison-bar>
+        <comparison-bar [begin]="points.currentMonth" [end]="points.average" [beginText]="'Punten deze maand'" [endText]="'Gemiddelde per maand'"></comparison-bar>
       </div>
     </div>
 
     <div class="card sidebar-section">
       <div class="sidebar-section-content">
-        <div class="points-total">
+        <div class="points-total-lifetime">
           <span class="total">Totaal punten</span>
-          <span class="value">{{ points.total }}</span>
+          <span class="value">{{ points.totalLifetime }}</span>
+        </div>
+        <div class="points-total-current">
+          <span class="value">{{ points.totalCurrent }}</span>
+          <span class="total">Huidige punten</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sidebar-section">
+      <div class="sidebar-section content">
+        <div class="points-graph">
+            
         </div>
       </div>
     </div>
