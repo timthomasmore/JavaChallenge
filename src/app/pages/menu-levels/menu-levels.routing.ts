@@ -7,7 +7,7 @@ const childRoutes: Routes = [
         path: '',
         component: MenuLevelsComponent,
         children: [
-            { path: '', redirectTo: 'levels1', pathMatch: 'full' },
+            { path: '', redirectTo: 'activiteit', pathMatch: 'full' },
             { path: 'levels1', loadChildren: './components/levels-1/levels-1.module#Levels1Module' },
             { path: 'levels2', component: Levels2Component },
         ]
