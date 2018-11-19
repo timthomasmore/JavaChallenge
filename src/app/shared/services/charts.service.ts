@@ -6,7 +6,7 @@ export class ChartsService {
     data1 = [];
     data2 = [];
     constructor() {
-        for (var i = 0; i < 100; i++) {
+        for (let i = 0; i < 100; i++) {
             this.xAxisData.push('Type ' + i);
             this.data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
             this.data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
@@ -36,7 +36,7 @@ export class ChartsService {
                 ]
             }
         ]
-    }
+    };
 
     LineOption = {
         xAxis: {
@@ -138,16 +138,29 @@ export class ChartsService {
         }
     };
 
-    getBarOption() {
+    getBarOption(data = null, xAxisData = null) {
+        data === null ? data = null : this.BarOption.series[0].data = data;
+        xAxisData === null ? data = null : this.BarOption.xAxis[0].data = xAxisData;
         return this.BarOption;
     }
-    getLineOption() {
+    getLineOption(data = null, xAxisData = null) {
+        data === null ? data = null : this.LineOption.series[0].data = data;
+        xAxisData === null ? data = null : this.LineOption.xAxis.data = xAxisData;
         return this.LineOption;
     }
-    getPieOption() {
+    getPieOption(data = null, legendData = null) {
+        data === null ? data = null : this.PieOption.series[0].data = data;
+        legendData === null ? data = null : this.PieOption.legend.data = legendData;
         return this.PieOption;
     }
-    getAnimationBarOption() {
+    getAnimationBarOption(data1 = null, data2 = null, xAxisData = null) {
+        data1 === null ? data1 = this.data1 : data1 = data1;
+        data2 === null ? data2 = this.data2 : data2 = data2;
+        xAxisData === null ? xAxisData = this.xAxisData.slice(0, data1.length) : xAxisData = xAxisData;
+
+        this.AnimationBarOption.series[0].data = data1;
+        this.AnimationBarOption.series[1].data = data2;
+        this.AnimationBarOption.xAxis.data = xAxisData;
         return this.AnimationBarOption;
     }
 }
