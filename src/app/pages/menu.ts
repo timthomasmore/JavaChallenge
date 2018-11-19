@@ -5,19 +5,29 @@ export let MENU_ITEM = [
         icon: 'dashboard'
     },
     {
-        path: 'editor',
-        title: 'Pell Editor',
-        icon: 'pencil'
+        path: 'profiel',
+        title: 'Profiel',
+        icon: 'user'
     },
     {
-        path: 'icon',
-        title: 'Icon',
+        path: 'shop',
+        title: 'Shop',
         icon: 'diamond'
     },
     {
-        path: 'profile',
-        title: 'User Profile',
-        icon: 'user'
+        path: 'activiteit',
+        title: 'Activiteit',
+        icon: 'check-square-o',
+      children: [
+        {
+          path: 'historiek',
+          title: 'Historiek'
+        },
+        {
+          path: 'toevoegen',
+          title: 'Toevoegen'
+        }
+      ]
     },
     {
         path: 'ui',
