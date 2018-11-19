@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IndexComponent } from './index.component';
-import { routing } from './index.routing';
+import { ShopComponent } from './shop.component';
+import { routing } from './shop.routing';
 import { SharedModule } from '../../shared/shared.module';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -13,7 +13,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
         routing
     ],
     declarations: [
-        IndexComponent
+        ShopComponent
     ]
 })
-export class IndexModule { }
+export class ShopModule { }
