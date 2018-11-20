@@ -1,11 +1,6 @@
 import {Injectable} from '@angular/core';
-
-import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs';
-import {catchError, map, tap} from 'rxjs/operators';
-import {share} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {pipe} from 'rxjs/util/pipe';
 
 @Injectable()
 export class RestService {
@@ -20,27 +15,5 @@ export class RestService {
 
   getTotalUsers(): Observable<any> {
     return this.http.get<any>(this.ROOT_URL + 'users/amount');
-  }
-
-  login(email: string, password: string): Observable<boolean> {
-    return this.http.post<{ token: string }>(this.ROOT_URL + '/users/login', {email: email, password: password})
-      .pipe(
-        map(result => {
-          localStorage.setItem('access_token', 'result.token');
-          return true;
-        })
-      );
-  }
-
-  createUser(email: string, password: string) {
-    console.log('adding user');
-    this.http.post(this.ROOT_URL + 'users/create', {email: email, password: password})
-      .pipe(
-        map(result => {
-          console.log(result);
-          localStorage.setItem('access_token', 'result.token');
-          return true;
-        })
-      );
   }
 }

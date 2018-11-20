@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {RestService} from '../../shared/services/rest.service';
+import {AuthService} from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [RestService]
+  providers: [AuthService]
 })
 export class LoginComponent implements OnInit {
   auth = 'show';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     email: ''
   };
 
-  constructor(private restService: RestService) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.user.email !== '' || this.user.email !== '') {
-      this.restService.createUser(this.user.email, this.user.password);
+      this.authService.login(this.user.email, this.user.password);
       alert('Login Succesful for: ' + this.user.email + ' - ' + this.user.password);
     } else {
       alert('Enter username and password');
