@@ -9,6 +9,12 @@ import { AdminComponent } from './admin.component';
 import { RewardsComponent } from './rewards/rewards.component';
 import { ActivitiesComponent } from './activities/activities.component';
 import { AllowrewardsComponent } from './allowrewards/allowrewards.component';
+import { ModalModule } from 'ngx-modal';
+import {FileTreeComponent} from '../ui/components/file-tree/file-tree.component';
+import {ProgressBarComponent} from '../ui/components/progress-bar/progress-bar.component';
+import {NotificationComponent} from '../ui/components/notification/notification.component';
+import {LoadingComponent} from '../ui/components/loading/loading.component';
+import {ModalsComponent} from '../ui/components/modals/modals.component';
 
 @NgModule({
     imports: [
@@ -16,13 +22,19 @@ import { AllowrewardsComponent } from './allowrewards/allowrewards.component';
         FormsModule,
         ReactiveFormsModule,
         SharedModule,
-        routing
+        ModalModule,
+        routing,
     ],
     declarations: [
         AdminComponent,
         RewardsComponent,
         ActivitiesComponent,
-        AllowrewardsComponent
+        AllowrewardsComponent,
+      NotificationComponent,
+      FileTreeComponent,
+      LoadingComponent,
+      ProgressBarComponent,
+      ModalsComponent
     ]
 })
 export class AdminModule { }

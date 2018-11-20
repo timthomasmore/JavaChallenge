@@ -44,7 +44,7 @@ export let MENU_ITEM = [
       },
       {
         path: 'allowrewards',
-        title: 'Beloningen'
+        title: 'Punten toekennen'
       }
     ]
   },
