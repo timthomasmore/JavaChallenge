@@ -4,7 +4,8 @@ import {RestService} from '../../shared/services/rest.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [RestService]
 })
 export class LoginComponent implements OnInit {
   auth = 'show';
