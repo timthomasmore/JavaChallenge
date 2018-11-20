@@ -16,4 +16,17 @@ export class RestService {
   getTotalUsers(): Observable<any> {
     return this.http.get<any>(this.ROOT_URL + 'users/amount');
   }
+
+  getRewards(): Observable<any> {
+    return this.http.get<any>(this.ROOT_URL + 'rewards');
+  }
+
+  redeemReward(userid: string, rewardid: string) {
+    return this.http.post(this.ROOT_URL + 'redeem/' + userid, {rewardid: rewardid})
+      .subscribe(
+        res => {
+
+        }
+      );
+  }
 }

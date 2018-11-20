@@ -1,13 +1,13 @@
 <div class="background-container">
 
 <div class="col-md-2 column productbox" *ngFor="let item of shop">
-  <img src="{{item[2]}}" class="productimage img-responsive" (click)="openModal(item)">
-  <div class="producttitle">{{item[0]}}</div>
+  <img src="{{item.foto}}" class="productimage img-responsive" (click)="openModal(item)">
+  <div class="producttitle">{{item.name}}</div>
   <div class="productprice">
     <div class="pull-right">
-      <a href="#" class="btn btn-danger btn-sm" role="button" (click)="buy(item)">KOOP</a>
+      <a class="btn btn-danger btn-sm" role="button" (click)="buy(item)">KOOP</a>
     </div>
-    <div class="pricetext">Punten: {{item[1]}}</div>
+    <div class="pricetext">Punten: {{item.credits}}</div>
   </div>
 </div>
 
