@@ -56,13 +56,13 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        opacity: 1;
-        -webkit-transition: opacity linear 0.5s;
-        transition: opacity linear 0.5s;
 
-        &.active {
-            opacity: 0.4;
-            background-color: rgb(58, 58, 58);
+
+        -webkit-transition: background-color linear 0.5s;
+        transition: background-color linear 0.5s;
+
+        &.shown {
+            background-color: rgba(60, 60, 60, 0.5);
         }
     }
     
