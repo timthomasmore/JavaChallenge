@@ -6,6 +6,7 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {HttpModule} from '@angular/http';
     ReactiveFormsModule,
     PagesModule,
     routing,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent
