@@ -3,7 +3,7 @@
 
     <div class="accordion">
       <!-- Accordion header -->
-      <div class="activity" *ngFor="let activity of activityList">
+      <div class="activity" [ngClass]="{'active': activity.active}" *ngFor="let activity of activityList" (click)="activity.active = !activity.active">
         <div class="wrapper" [id]="activity.name" data-toggle="collapse" [attr.data-target]="'#' + activity.id" aria-expanded="false" [attr.aria-controls]="activity.name" >
           <div class="activity-name">{{activity.name}}</div>
           <div class="employee-name">{{activity.employee}}</div>

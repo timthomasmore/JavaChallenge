@@ -26,7 +26,8 @@ export class AllowrewardsComponent implements OnInit {
     let lastNames = [ 'Jones', 'Test', 'Evans', 'Johansson', 'Rolls'];
 
     for (let i = 0; i < 30; i++) {
-      let activity = {name: '', employee: '', date: new Date(), points: null, description: '', id: null, pointsEditable: null};
+      let activity = {name: '', employee: '', date: new Date(),
+          points: null, description: '', id: null, pointsEditable: null, active: false};
       let days = Math.floor( Math.random() * 20 );
       let firstName = firstNames[Math.floor( Math.random() * firstNames.length )];
       let lastName = lastNames[Math.floor( Math.random() * lastNames.length )];
