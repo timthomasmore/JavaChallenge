@@ -23,11 +23,9 @@ export class IndexComponent implements OnInit {
   constructor(private _chartsService: ChartsService, private restService: RestService) {}
 
   ngOnInit() {
-    this.restService.getTotalUsers().subscribe(response => {
-      this.totalUsers = JSON.parse(response['_body']).amountUsers;
-    });
-
-    console.log(this.restService.getTotalUsers());
+      this.restService.getTotalUsers().subscribe(response => this.totalUsers = JSON.stringify(response.amountUsers));
+    //this.restService.getTotalUsers().subscribe(response => this.totalUsers = response);
+    //console.log(this.restService.getTotalUsers());
     this.monthlyPoints = [10, 52, 200, 334, 500, 330, 500, 600, 500, 250, 389, 829]; // Te vervangen door api call
     this._chartsService.inputData1 = this.monthlyPoints;
     this.BarOption = this._chartsService.getBarOption();
