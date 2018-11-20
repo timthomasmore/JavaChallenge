@@ -12,8 +12,8 @@ export class RestService {
 
   constructor(private http: Http) { }
 
-  getTotalUsers() {
-    console.log('Getting total users');
+  //getTotalUsers() {
+    /*console.log('Getting total users');
     return this.http.get(this.ROOT_URL + 'users/amount')
       .pipe(
         tap(req => console.log('get-request', req)),               // (6)
@@ -24,7 +24,13 @@ export class RestService {
             return null;
           }),
         share()                                                    // (8)
-      );
+      );*/
+
+  //}
+
+  getTotalUsers() {
+    console.log(this.http.get(this.ROOT_URL + 'users/amount'));
+    return this.http.get(this.ROOT_URL + 'users/amount');
   }
 
 }

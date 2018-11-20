@@ -23,6 +23,7 @@ export class IndexComponent implements OnInit {
   constructor(private _chartsService: ChartsService, private restService: RestService) {}
 
   ngOnInit() {
+    console.log(this.restService.getTotalUsers());
     this.restService.getTotalUsers().subscribe(response => {
       this.totalUsers = JSON.parse(response['_body']).amountUsers;
     });
