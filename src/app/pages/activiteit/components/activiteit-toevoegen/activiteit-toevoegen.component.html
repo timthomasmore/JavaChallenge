@@ -1,0 +1,14 @@
+<div class="col-md-12">
+  <card cardTitle="Voltooide activiteit">
+    <form class="form-group" #f="ngForm" (ngSubmit)="submitForm(f)">
+      <label class="control-label">Activiteit</label>
+      <input type="text" class="form-control" placeholder="Activiteit" name="activiteit" ngModel>
+
+
+      <label class="control-label">Beschrijving</label>
+      <textarea class="form-control" placeholder="Beschrijving" name="beschrijving" ngModel></textarea> <br>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </card>
+</div>

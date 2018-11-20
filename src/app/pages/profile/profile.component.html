@@ -4,71 +4,39 @@
   </div>
 
   <div class="col-md-6">
-      <div class="card">
-        <div class="historiek">
+    <div class="card">
 
-          <div class="list">
-            <span class="list-title">Laatste 5 rewards</span>
-            <div class="profile-list" *ngFor="let reward of rewardList">
-              <div class="item-name">{{ reward.name }}</div>
-              <div class="item-date">{{ reward.date | date:'dd/MM/yyyy' }}</div>
-              <div class="item-points">{{ reward.points }}</div>
-            </div>
-          </div>
-
-          <div class="list">
-            <span class="list-title">Laatste 5 rewards</span>
-            <div class="profile-list" *ngFor="let activity of activityList">
-              <div class="item-name">{{ activity.name }}</div>
-              <div class="item-date">{{ activity.date | date:'dd/MM/yyyy' }}</div>
-              <div class="item-points">{{ activity.points }} pts</div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-12">
-              <card cardTitle='Bar Chart'>
-                <div echarts [options]="BarOption" [loading]="showloading" theme="dark" class="demo-chart"></div>
-              </card>
-            </div>
-            <div class="col-md-12">
-              <card cardTitle='Line Chart'>
-                <div echarts [options]="LineOption" [loading]="showloading" theme="dark" class="demo-chart"></div>
-              </card>
-            </div>
-            <div class="col-md-12">
-              <card cardTitle='Pie Chart'>
-                <div echarts [options]="PieOption" [loading]="showloading" theme="dark" class="demo-chart"></div>
-              </card>
-            </div>
-            <div class="col-md-12">
-              <card cardTitle='AnimationBar Chart'>
-                <div echarts [options]="AnimationBarOption" [loading]="showloading" theme="dark" class="demo-chart"></div>
-              </card>
-            </div>
-          </div>
-      </div>
+    </div>
   </div>
 
   <div class="col-md-3">
-      <profile-sidebar></profile-sidebar>
+    <profile-sidebar></profile-sidebar>
   </div>
 </div>
 
+<div class="row col-md-12">
+  <div class="card">
 
-<!-- <div class="col-md-12">
-    <card cardTitle="Voltooide activiteit">
-      <form class="form-group">
-        <label class="control-label">Activiteit</label>
-        <input type="text" class="form-control" placeholder="Activiteit">
-
-
-        <label class="control-label">Beschrijving</label>
-        <textarea class="form-control" placeholder="Beschrijving"></textarea> <br>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </card>
-  </div> -->
+    <div class="historiek">
+  
+      <div class="list">
+        <span class="list-title">Laatste 5 rewards</span>
+        <div class="profile-list" *ngFor="let reward of rewardList">
+          <div class="item-name">{{ reward.name }}</div>
+          <div class="item-date">{{ reward.date | date:'dd/MM/yyyy' }}</div>
+          <div class="item-points">{{ reward.points }} pts</div>
+        </div>
+      </div>
+  
+      <div class="list">
+        <span class="list-title">Laatste 5 rewards</span>
+        <div class="profile-list" *ngFor="let activity of activityList">
+          <div class="item-name">{{ activity.name }}</div>
+          <div class="item-date">{{ activity.date | date:'dd/MM/yyyy' }}</div>
+          <div class="item-points">{{ activity.points }} pts</div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div>

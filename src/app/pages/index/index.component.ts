@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ChartsService } from '../charts/components/echarts/charts.service';
+import {Component, OnInit} from '@angular/core';
+import {ChartsService} from '../charts/components/echarts/charts.service';
 import {RestService} from '../../shared/services/rest.service';
 import {finalize} from 'rxjs/operators';
 
@@ -20,14 +20,13 @@ export class IndexComponent implements OnInit {
   BarOption;
   monthlyPoints = [];
 
-  constructor(private _chartsService: ChartsService, private restService: RestService) {}
+  constructor(private _chartsService: ChartsService, private restService: RestService) {
+  }
 
   ngOnInit() {
-    this.restService.getTotalUsers().subscribe(response => {
-      this.totalUsers = JSON.parse(response['_body']).amount;
-    });
-
-    console.log(this.restService.getTotalUsers());
+    this.restService.getTotalUsers().subscribe(response => this.totalUsers = JSON.stringify(response.amountUsers));
+    //this.restService.getTotalUsers().subscribe(response => this.totalUsers = response);
+    //console.log(this.restService.getTotalUsers());
     this.monthlyPoints = [10, 52, 200, 334, 500, 330, 500, 600, 500, 250, 389, 829]; // Te vervangen door api call
     this._chartsService.inputData1 = this.monthlyPoints;
     this.BarOption = this._chartsService.getBarOption();
