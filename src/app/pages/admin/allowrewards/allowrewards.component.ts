@@ -79,6 +79,8 @@ export class AllowrewardsComponent implements OnInit {
       width: 350
     }).then((result) => {
       if (result.value) {
+        let index = this.activityList.indexOf(activity);
+        this.activityList.splice(index, 1);
         swal(
           'Bevestigd!',
           'De activiteit is bevestigd en de punten zijn toegekend.',

@@ -18,7 +18,7 @@
             <div class="activity-confirm-description"><span class="confirm-title">Beschrijving:</span> {{activity.description}}</div>
             <div class="activity-confirm-points"><span class="confirm-title">Punten:</span>
               <span *ngIf="!activity.pointsEditable">{{activity.points}}</span>
-              <input class="form-control points-input" type="number" required [(ngModel)]="activity.points" *ngIf="activity.pointsEditable">
+              <input class="form-control points-input" type="number" required [(ngModel)]="activity.points" *ngIf="activity.pointsEditable" min="0">
             </div>
             <button class="btn btn-primary" (click)="alertConfirm(activity)" [disabled]="activity.points === null">Bevestig</button><br>
           </div>
@@ -29,5 +29,3 @@
 
   </div>
 </div>
-
-<!-- <div class="activity accordion" *ngFor="let activity of activityList" (click)="alertConfirm(activity)"> -->
