@@ -2,13 +2,15 @@
   <div class="sidebar">
     <div class="card sidebar-section">
       <div class="sidebar-section-content">
-        <comparison-bar [begin]="points.currentMonth" [end]="points.previousMonth" [beginText]="'Punten deze maand'" [endText]="'Punten vorige maand'"></comparison-bar>
+        <comparison-bar [begin]="points.currentMonth" [end]="points.previousMonth" [beginText]="'Punten deze maand'"
+          [endText]="'Punten vorige maand'"></comparison-bar>
       </div>
     </div>
 
     <div class="card sidebar-section">
       <div class="sidebar-section-content">
-        <comparison-bar [begin]="points.currentMonth" [end]="points.average" [beginText]="'Punten deze maand'" [endText]="'Gemiddelde per maand'"></comparison-bar>
+        <comparison-bar [begin]="points.currentMonth" [end]="points.average" [beginText]="'Punten deze maand'"
+          [endText]="'Gemiddelde per maand'"></comparison-bar>
       </div>
     </div>
 
@@ -24,6 +26,28 @@
         </div>
       </div>
     </div>
-    
+
+    <div class="card sidebar-section">
+      <div class="list">
+        <span class="list-title">Laatste 5 rewards</span>
+        <div class="profile-list" *ngFor="let reward of rewardList">
+          <div class="item-name">{{ reward.name }}</div>
+          <div class="item-date">{{ reward.date | date:'dd/MM/yyyy' }}</div>
+          <div class="item-points">{{ reward.points }} pts</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card sidebar-section">
+      <div class="list">
+        <span class="list-title">Laatste 5 rewards</span>
+        <div class="profile-list" *ngFor="let activity of activityList">
+          <div class="item-name">{{ activity.name }}</div>
+          <div class="item-date">{{ activity.date | date:'dd/MM/yyyy' }}</div>
+          <div class="item-points">{{ activity.points }} pts</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

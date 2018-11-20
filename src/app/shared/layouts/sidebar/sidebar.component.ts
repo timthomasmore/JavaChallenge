@@ -10,7 +10,6 @@ import { GlobalService } from '../../services/global.service';
 })
 export class SidebarComponent implements OnInit {
 
-
   public menuInfo: Array<any> = [];
   public sidebarToggle = true;
 
