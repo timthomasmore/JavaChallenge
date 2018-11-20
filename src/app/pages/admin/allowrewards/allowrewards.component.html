@@ -1,3 +1,33 @@
-<p>
-  allowrewards works!
-</p>
+<div class="col-md-12">
+  <div class="card">
+
+    <div class="accordion">
+      <!-- Accordion header -->
+      <div class="activity" *ngFor="let activity of activityList">
+        <div class="wrapper" [id]="activity.name" data-toggle="collapse" [attr.data-target]="'#' + activity.id" aria-expanded="false" [attr.aria-controls]="activity.name" >
+          <div class="activity-name">{{activity.name}}</div>
+          <div class="employee-name">{{activity.employee}}</div>
+          <div class="date-submitted">{{activity.date | date:'dd/MM/yyyy'}}</div>
+        </div>
+  
+        <!-- Accordion content -->
+        <div [id]="activity.id" class="collapse" [attr.aria-labelledby]="activity.name" [attr.data-parent]="activity.name">
+          <div class="confirm-wrapper">
+            <div class="activity-confirm-employee"><span class="confirm-title">Medewerker:</span> {{activity.employee}}</div>
+            <div class="activity-confirm-name"><span class="confirm-title">Activiteit:</span> {{activity.name}}</div>
+            <div class="activity-confirm-description"><span class="confirm-title">Beschrijving:</span> {{activity.description}}</div>
+            <div class="activity-confirm-points"><span class="confirm-title">Punten:</span>
+              <span *ngIf="!activity.pointsEditable">{{activity.points}}</span>
+              <input class="form-control points-input" type="number" required [(ngModel)]="activity.points" *ngIf="activity.pointsEditable">
+            </div>
+            <button class="btn btn-primary" (click)="alertConfirm(activity)" [disabled]="activity.points === null">Bevestig</button><br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- <div class="activity accordion" *ngFor="let activity of activityList" (click)="alertConfirm(activity)"> -->
