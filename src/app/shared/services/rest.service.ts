@@ -31,4 +31,14 @@ export class RestService {
         })
       );
   }
+
+  createUser(email: string, password: string) {
+    return this.http.post(this.ROOT_URL + '/users/create', {email: email, password: password})
+      .pipe(
+        map(result => {
+          localStorage.setItem('access_token', 'result.token');
+          return true;
+        })
+      );
+  }
 }

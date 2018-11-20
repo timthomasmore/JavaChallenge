@@ -47,8 +47,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if (this.user.name !== '' || this.user.name !== '') {
-      alert('Login Succesful for: ' + this.user.name + ' - ' + this.user.password);
+    if (this.user.email !== '' || this.user.email !== '') {
+      //this.restService.createUser(this.user.email, this.user.password);
+      alert('Login Succesful for: ' + this.user.email + ' - ' + this.user.password);
     } else {
       alert('Enter username and password');
     }
