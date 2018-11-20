@@ -24,7 +24,7 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.restService.getTotalUsers().subscribe(response => {
-      this.totalUsers = JSON.parse(response['_body']).amountUsers;
+      this.totalUsers = JSON.parse(response['_body']).amount;
     });
 
     console.log(this.restService.getTotalUsers());
