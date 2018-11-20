@@ -2,3 +2,5 @@
   <span class="sidebar-top-line"></span>
   <du-menu [menuInfo]="menuInfo"></du-menu>
 </div>
+
+<div class="overlay" *ngIf="sidebarToggle" [ngClass]="{'active':sidebarToggle}"></div>
