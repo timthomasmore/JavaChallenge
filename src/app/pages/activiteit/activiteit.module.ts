@@ -7,6 +7,7 @@ import { SharedModule } from '../../shared/shared.module';
 /* components */
 import { ActiviteitComponent } from './activiteit.component';
 import { HistoriekComponent } from './components/historiek/historiek.component';
+import { ActiviteitToevoegenComponent } from './components/activiteit-toevoegen/activiteit-toevoegen.component';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { HistoriekComponent } from './components/historiek/historiek.component';
     ],
     declarations: [
         ActiviteitComponent,
-        HistoriekComponent
+        HistoriekComponent,
+        ActiviteitToevoegenComponent
     ]
 })
 export class ActiviteitModule { }
