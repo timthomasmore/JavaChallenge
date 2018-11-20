@@ -33,9 +33,11 @@ export class RestService {
   }
 
   createUser(email: string, password: string) {
-    return this.http.post(this.ROOT_URL + '/users/create', {email: email, password: password})
+    console.log('adding user');
+    this.http.post(this.ROOT_URL + 'users/create', {email: email, password: password})
       .pipe(
         map(result => {
+          console.log(result);
           localStorage.setItem('access_token', 'result.token');
           return true;
         })
