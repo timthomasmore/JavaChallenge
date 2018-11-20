@@ -3,4 +3,5 @@
   <du-menu [menuInfo]="menuInfo"></du-menu>
 </div>
 
-<div class="overlay" *ngIf="sidebarToggle" [ngClass]="{'active':sidebarToggle}"></div>
+<div class="overlay animated fadeIn"
+  [ngClass]="{'shown':sidebarToggle}"></div>
