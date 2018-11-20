@@ -13,9 +13,15 @@ export class RestService {
 
   constructor(private http: HttpClient) { }
 
+<<<<<<< HEAD
   getTotalUsers(): Observable<any> {
     console.log('Getting total users');
     /*return this.http.get(this.ROOT_URL + 'users/amount')
+=======
+  //getTotalUsers() {
+    /*console.log('Getting total users');
+    return this.http.get(this.ROOT_URL + 'users/amount')
+>>>>>>> ee1ab8e1309ca5d1f064becfe1a882ff9cfb3402
       .pipe(
         tap(req => console.log('get-request', req)),               // (6)
         catchError(                                                // (7)
@@ -26,7 +32,16 @@ export class RestService {
           }),
         share()                                                    // (8)
       );*/
+<<<<<<< HEAD
       return this.http.get<any>(this.ROOT_URL + 'users/amount');
+=======
+
+  //}
+
+  getTotalUsers() {
+    console.log(this.http.get(this.ROOT_URL + 'users/amount'));
+    return this.http.get(this.ROOT_URL + 'users/amount');
+>>>>>>> ee1ab8e1309ca5d1f064becfe1a882ff9cfb3402
   }
 
 }

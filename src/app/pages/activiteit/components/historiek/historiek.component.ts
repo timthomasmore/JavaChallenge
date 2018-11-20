@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoriekComponent implements OnInit {
 
+  showloading: boolean = false;
+
   constructor() { }
 
   ngOnInit() {
