@@ -1,3 +1,51 @@
-<p>
-  activities works!
-</p>
+<div class="col-md-12">
+  <card cardTitle="Activiteit toevoegen">
+    <form class="form-group">
+      <label class="control-label">Activiteit</label>
+      <input type="text" class="form-control" placeholder="Activiteit" [(ngModel)]="newActivity.name" name="name">
+      <label class="control-label">Punten</label>
+      <input type="number" class="form-control" placeholder="punten" [(ngModel)]="newActivity.price" name="price">
+      <hr />
+      <button type="submit" class="btn btn-primary" (click)="addActivity()">Voeg Toe</button>
+    </form>
+  </card>
+</div>
+<div class="col-md-12">
+  <card cardTitle="Activiteiten">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>#</th>
+        <th>Activiteit</th>
+        <th>Punten</th>
+        <th>Verwijder</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of activities;let index = index">
+        <td>{{index}}</td>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>
+          <button class="tip-ico tip-ico-primary" (click)="openModalNG(closeModalid, item)">
+            <i class="fa fa-trash fa-fw fa-align-center"></i>
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </card>
+</div>
+
+<modal #closeModalid>
+  <modal-header>
+    <h3>Opgelet!</h3>
+  </modal-header>
+  <modal-content>
+    <p>Weet u zeker dat u deze activiteit wil verwijderen? Deze actie kan niet geannuleerd worden!</p>
+  </modal-content>
+  <modal-footer>
+    <button class="btn btn-primary" (click)="closeModal(closeModalid)">Annuleer</button>
+    <button class="btn btn-danger" (click)="deleteModal(closeModalid)">Verwijder</button>
+  </modal-footer>
+</modal>
