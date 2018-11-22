@@ -8,7 +8,7 @@
       <i class="fa fa-cogs"></i>
       <span>Settings</span>
     </h3>
-    <p class="desc">Settings desc Settings desc Settings desc Settings desc.</p>
+    <p class="desc">Pas hier de instellingen aan.</p>
   </div>
   <ul class="config-content">
     <li class="config-list">
@@ -17,11 +17,15 @@
     </li>
     <li class="config-list">
       <span>Config2</span>
-      <switch switchName="config2" switchId="config2" multiple></switch>
+      <switch switchName="config2" switchId="config2" multiple ></switch>
     </li>
     <li class="config-list">
       <span>Config3</span>
       <switch switchName="config3" switchId="config3" multiple></switch>
+    </li>
+    <li class="config-list" (click)="signOut()">
+      <span>Afmelden</span>
+      <i class="fas fa-sign-out-alt" style="font-size: 2.5rem;"></i>
     </li>
   </ul>
 </div>

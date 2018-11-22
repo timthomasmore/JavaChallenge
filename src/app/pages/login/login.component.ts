@@ -58,6 +58,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['pages/index']);
         }
       );
+      if (this.authService.isLoggedIn()) {
+        this.router.navigate(['pages/index']);
+      } else {
+        this.showError = true;
+      }
     } else {
       this.showError2 = true;
     }

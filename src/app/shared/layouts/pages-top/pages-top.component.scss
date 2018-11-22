@@ -49,10 +49,14 @@
         font-size: $lg-text;
     }
     .user-post {
-        color: $primary;
+        color: $primary !important;
         font-size: $sm-text;
         margin-top: 5px;
     }
+
+  .user-post a {
+    color: $primary;
+  }
 }
 
 .collapse-menu {

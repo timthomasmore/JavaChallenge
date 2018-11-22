@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'pages-top',
@@ -15,7 +16,7 @@ export class PagesTopComponent {
   sidebarToggle: boolean = true;
   tip = { ring: true, email: true };
 
-  constructor(private _globalService: GlobalService) { }
+  constructor(private _globalService: GlobalService, private authService: AuthService) { }
 
   public _sidebarToggle() {
     /* this._globalService.sidebarToggle$.subscribe(sidebarToggle => {
@@ -35,5 +36,10 @@ export class PagesTopComponent {
 
 
     //this._globalService._sidebarToggleState(!this.sidebarToggle);
+  }
+
+  signOut() {
+    console.log('Signing out');
+    this.authService.logout();
   }
 }

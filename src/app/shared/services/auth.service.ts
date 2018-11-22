@@ -17,7 +17,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post<any>(this.ROOT_URL + 'users/login', {email, password})
       .pipe(
-        map(res => this.setSession(res))
+        map(res => {this.setSession(res)})
       ).shareReplay();
   }
 
@@ -32,6 +32,8 @@ export class AuthService {
   logout() {
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('persmissions');
+    this.router.navigate(['login']);
   }
 
   public isLoggedIn() {
