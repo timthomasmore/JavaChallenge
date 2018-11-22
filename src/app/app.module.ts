@@ -6,7 +6,10 @@ import { routing } from './app.routing';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpModule} from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {InterceptService} from "./shared/services/intercept.service";
+import {AuthGuard} from "./guards/auth.guard";
+import {AuthService} from "./shared/services/auth.service";
 
 @NgModule({
   imports: [
@@ -18,6 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
     routing,
     HttpModule,
     HttpClientModule
+  ],
+  providers: [
+    AuthGuard,
+    AuthService,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true },
   ],
   declarations: [
     AppComponent
