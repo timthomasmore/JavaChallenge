@@ -9,6 +9,8 @@ import 'rxjs/add/operator/shareReplay';
 @Injectable()
 export class AuthService {
 
+  permissionArray = [];
+
   readonly ROOT_URL = 'http://localhost:1234/';
 
   constructor(private http: HttpClient, private router: Router) {
@@ -17,7 +19,9 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post<any>(this.ROOT_URL + 'users/login', {email, password})
       .pipe(
-        map(res => {this.setSession(res)})
+        map(res => {
+          this.setSession(res)
+        })
       ).shareReplay();
   }
 
@@ -27,6 +31,8 @@ export class AuthService {
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     localStorage.setItem('permissions', authResult.permissions);
+    this.permissionArray = localStorage.getItem('permissions').split(',');
+    console.log(this.permissionArray);
   }
 
   logout() {
@@ -50,12 +56,30 @@ export class AuthService {
     return moment(expiresAt);
   }
 
-  public canViewAdmin() {
-    let permissions = localStorage.getItem('permissions');
-    let permissionArray = permissions.split(',');
-    if (permissionArray[0] == 'reward' && permissionArray[1] == 'assignment' && permissionArray[2] == 'approve') {
+  public canViewBeheerShop() {
+    this.permissionArray = localStorage.getItem('permissions').split(',');
+    if (this.permissionArray.indexOf('reward') !== -1) {
       return true;
+    } else {
+      return false;
     }
-    return false;
+  }
+
+  public canViewBeheerActiviteiten() {
+    this.permissionArray = localStorage.getItem('permissions').split(',');
+    if (this.permissionArray.indexOf('assignment') !== -1) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public canviewPuntenToekennen() {
+    this.permissionArray = localStorage.getItem('permissions').split(',');
+    if (this.permissionArray.indexOf('approve') !== -1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

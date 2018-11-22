@@ -10,7 +10,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {InterceptService} from "./shared/services/intercept.service";
 import {AuthGuard} from "./guards/auth.guard";
 import {AuthService} from "./shared/services/auth.service";
-import {AuthAdminGuard} from "./guards/auth-admin.guard";
+import {GuardShopGuard} from "./guards/guard-shop.guard";
+import {GuardApproveGuard} from "./guards/guard-approve.guard";
+import {GuardActivitiesGuard} from "./guards/guard-activities.guard";
 
 @NgModule({
   imports: [
@@ -25,7 +27,9 @@ import {AuthAdminGuard} from "./guards/auth-admin.guard";
   ],
   providers: [
     AuthGuard,
-    AuthAdminGuard,
+    GuardShopGuard,
+    GuardApproveGuard,
+    GuardActivitiesGuard,
     AuthService,
     { provide: HTTP_INTERCEPTORS, useClass: InterceptService, multi: true },
   ],

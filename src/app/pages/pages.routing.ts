@@ -2,7 +2,6 @@ import {Routes, RouterModule} from '@angular/router';
 import {PagesComponent} from './pages.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from "../guards/auth.guard";
-import {AuthAdminGuard} from "../guards/auth-admin.guard";
 
 export const childRoutes: Routes = [
   {
@@ -25,7 +24,7 @@ export const childRoutes: Routes = [
       {path: 'table', loadChildren: './table/table.module#TableModule'},
       {path: 'menu-levels', loadChildren: './menu-levels/menu-levels.module#MenuLevelsModule'},
       {path: 'activiteit', loadChildren: './activiteit/activiteit.module#ActiviteitModule'},
-      {path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivate: [AuthAdminGuard]},
+      {path: 'admin', loadChildren: './admin/admin.module#AdminModule'},
     ]
   }
 ];

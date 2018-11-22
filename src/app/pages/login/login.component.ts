@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
         this.showError = true;
       }
     } else {
+      this.showError = false;
       this.showError2 = true;
     }
   }
