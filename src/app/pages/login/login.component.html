@@ -7,13 +7,16 @@
         <span class="input-group-addon addon-left" id="username">
           <i class="fa fa-user fa-fw"></i>
         </span>
-        <input class="form-control with-primary-addon" placeholder="User email" type="text" [(ngModel)]="user.email" />
+        <input class="form-control with-primary-addon" name="email" placeholder="User email" type="text" [(ngModel)]="user.email" [class.is-invalid]="showError || showError2"/>
+        <div class="text-danger" [hidden]="!showError2"><small class="form-text text-muted text-danger">Dit veld is verplicht!</small></div>
       </div>
       <div class="input-group">
         <span class="input-group-addon addon-left" id="password">
           <i class="fa fa-lock fa-fw"></i>
         </span>
-        <input class="form-control with-primary-addon" placeholder="Password" type="password" [(ngModel)]="user.password" />
+        <input class="form-control with-primary-addon" name="password" placeholder="Password" type="password" [(ngModel)]="user.password" [class.is-invalid]="showError || showError2"/>
+        <div class="text-danger" [hidden]="!showError"><small class="form-text text-muted text-danger">De opgegeven combinatie bestaat niet!</small></div>
+        <div class="text-danger" [hidden]="!showError2"><small class="form-text text-muted text-danger">Dit veld is verplicht!</small></div>
       </div>
       <button class="btn btn-lg btn-primary" (click)="login()">Login</button>
       <button class="btn btn-link" (click)="forgotPassword()">Wachtwoord vergeten?</button>

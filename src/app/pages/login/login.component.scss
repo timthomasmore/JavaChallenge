@@ -40,3 +40,9 @@
         color: lighten($fonts-color, 30%);
     }
 }
+
+/* validation styles */
+.is-invalid {
+  border-bottom: 1px solid #a94442;
+}
+

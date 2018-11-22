@@ -26,6 +26,7 @@ export class AuthService {
 
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem('permissions', authResult.permissions);
   }
 
   logout() {
@@ -47,4 +48,12 @@ export class AuthService {
     return moment(expiresAt);
   }
 
+  public canViewAdmin() {
+    let permissions = localStorage.getItem('permissions');
+    let permissionArray = permissions.split(',');
+    if (permissionArray[0] == 'reward' && permissionArray[1] == 'assignment' && permissionArray[2] == 'approve') {
+      return true;
+    }
+    return false;
+  }
 }
