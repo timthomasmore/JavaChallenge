@@ -3,31 +3,34 @@
     <form class="form-group">
       <label class="control-label">Activiteit</label>
       <input type="text" class="form-control" placeholder="Activiteit" [(ngModel)]="newActivity.name" name="name">
-      <label class="control-label">Punten</label>
-      <input type="number" class="form-control" placeholder="punten" [(ngModel)]="newActivity.price" name="price">
+      <label class="control-label">Beschrijving</label>
+      <textarea class="form-control" placeholder="Description" [(ngModel)]="newActivity.description" name="description"></textarea>
+      <label class="control-label">Credits</label>
+      <input type="number" class="form-control" placeholder="punten" [(ngModel)]="newActivity.credits" name="credits" min="1">
       <hr />
-      <button type="submit" class="btn btn-primary" (click)="addActivity()">Voeg Toe</button>
+      <button type="submit" class="btn btn-primary" (click)="addAct()">Voeg Toe</button>
     </form>
   </card>
 </div>
+
 <div class="col-md-12">
   <card cardTitle="Activiteiten">
     <table class="table table-striped">
       <thead>
       <tr>
-        <th>#</th>
         <th>Activiteit</th>
+        <th>Beschrijving</th>
         <th>Punten</th>
         <th>Verwijder</th>
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of activities;let index = index">
-        <td>{{index}}</td>
-        <td>{{item[0]}}</td>
-        <td>{{item[1]}}</td>
+      <tr *ngFor="let a of activityData">
+        <td>{{ a.name }}</td>
+        <td>{{ a.description }}</td>
+        <td>{{ a.credits }}</td>
         <td>
-          <button class="tip-ico tip-ico-primary" (click)="openModalNG(closeModalid, item)">
+          <button class="tip-ico tip-ico-primary btn-danger" (click)="openModalNG(closeModalid, a)">
             <i class="fa fa-trash fa-fw fa-align-center"></i>
           </button>
         </td>

@@ -29,22 +29,32 @@
 
     <div class="card sidebar-section">
       <div class="list">
-        <span class="list-title">Laatste 5 rewards</span>
-        <div class="profile-list" *ngFor="let reward of rewardList">
-          <div class="item-name">{{ reward.name }}</div>
-          <div class="item-date">{{ reward.date | date:'dd/MM/yyyy' }}</div>
-          <div class="item-points">{{ reward.points }} pts</div>
+        <span class="list-title">Laatste rewards</span>
+        <ng-container *ngIf="userData[0]?.redeemedrewards[0]">
+          <div class="profile-list" *ngFor="let rew of userData[0].redeemedrewards">
+            <div class="item-name">{{ rew }}</div>
+            <!-- <div class="item-date">{{ reward.date | date:'dd/MM/yyyy' }}</div> -->
+            <div class="item-points">{{ rew }} pts</div>
+          </div>
+        </ng-container>
+        <div class="profile-list" *ngIf="!userData[0]?.redeemedrewards[0]">
+          Niets om te tonen
         </div>
       </div>
     </div>
 
     <div class="card sidebar-section">
       <div class="list">
-        <span class="list-title">Laatste 5 rewards</span>
-        <div class="profile-list" *ngFor="let activity of activityList">
-          <div class="item-name">{{ activity.name }}</div>
-          <div class="item-date">{{ activity.date | date:'dd/MM/yyyy' }}</div>
-          <div class="item-points">{{ activity.points }} pts</div>
+        <span class="list-title">Laatste opdrachten</span>
+        <ng-container *ngIf="userData[0]?.completedassignments[0]">
+          <div class="profile-list" *ngFor="let act of userData[0].completedassignments">
+            <div class="item-name">{{ act }}</div>
+            <!-- <div class="item-date">{{ act | date:'dd/MM/yyyy' }}</div> -->
+            <div class="item-points">{{ act }} pts</div>
+          </div>
+        </ng-container>
+        <div class="profile-list" *ngIf="!userData[0]?.completedassignments[0]">
+          Niets om te tonen
         </div>
       </div>
     </div>

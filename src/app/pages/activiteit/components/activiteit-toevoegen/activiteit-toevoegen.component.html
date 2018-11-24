@@ -7,7 +7,7 @@
       <div class="assignment">
         <div class="wrapper" [id]="a._id" data-toggle="collapse" [attr.data-target]="'#' + a._id + 'content'" aria-expanded="false"
           [attr.aria-controls]="a._id + 'content'">
-          <div class="assignment-title">{{a.name}}</div>
+          <div class="acc-title">{{a.name}}</div>
         </div>
     
         <!-- Accordion content -->
@@ -15,15 +15,18 @@
           <div class="confirm-wrapper">
 
             <div class="assignment-description">
+              <span class="assignment-title">Beschrijving </span>
               <span class="assignment-description">{{a.description}}</span> 
             </div> <br>
 
             <div class="assignment-points">
-              <span class="assignment-points">{{a.credits}} credits</span> 
+              <span class="assignment-title">Credits </span>
+              <span class="assignment-points">{{a.credits}}</span> 
             </div> <br>
 
             <div class="completed-beschrijving">
-              <span class="completed">Beschrijving </span> <textarea class="form-control" name="description" id="description" rows="3" #ref></textarea>
+              <span class="assignment-title">Verduidelijking </span>
+              <textarea class="form-control" name="description" id="description" rows="3" #ref></textarea>
             </div><br>
     
             <div class="button">

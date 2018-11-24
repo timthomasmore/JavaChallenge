@@ -1,57 +1,32 @@
 import { Component, OnInit, Input } from '@angular/core';
 import swal from 'sweetalert2';
+import { RestService } from '../../../shared/services/rest.service';
 
 @Component({
   selector: 'app-allowrewards',
   templateUrl: './allowrewards.component.html',
-  styleUrls: ['./allowrewards.component.scss']
+  styleUrls: ['./allowrewards.component.scss'],
+  providers: [RestService]
 })
 export class AllowrewardsComponent implements OnInit {
 
   activityList = [];
-  @Input()
-  activityPoints: number = null;
   
-  constructor() { }
-  
-  ngOnInit() {
-    // Delete
-    this.fillActivityList();
+  constructor(private restService: RestService) { 
+    this.restService.getAssignments('unapproved').subscribe( 
+      arr => this.activityList = arr,
+      err => console.log('Error!', err),
+      () => console.log(this.activityList) ); // TODO! Console.log(this.activityList) verwijderen als pagina klaar is
   }
   
-  // Delete
-  fillActivityList() {
-    let activities = [ 'Lezing', 'Blogpost', 'Meetup', 'Conferentie', 'Onderzoek', 'Presentatie'];
-    let firstNames = [ 'Jonathan', 'Tom', 'Jonas', 'Alex', 'Nathalie', 'Eva', 'Alexa'];
-    let lastNames = [ 'Jones', 'Test', 'Evans', 'Johansson', 'Rolls'];
+  ngOnInit() { }
+  
 
-    for (let i = 0; i < 30; i++) {
-      let activity = {name: '', employee: '', date: new Date(),
-          points: null, description: '', id: null, pointsEditable: null, active: false};
-      let days = Math.floor( Math.random() * 20 );
-      let firstName = firstNames[Math.floor( Math.random() * firstNames.length )];
-      let lastName = lastNames[Math.floor( Math.random() * lastNames.length )];
-      let activityName = activities[Math.floor( Math.random() * activities.length )];
-      
-      activity.name = activityName;
-      activity.employee = firstName + ' ' + lastName;
-      activity.date.setDate( activity.date.getDate() - days );
-      (i % 2 === 0) ? activity.points = i : activity.points = null;
-      (activity.points === null) ? activity.pointsEditable = true : activity.pointsEditable = false;
-      activity.description = 'Beschrijving activiteit';
-      activity.id = i;
-
-      this.activityList.push(activity);
-    }
-  }
-
-  alertConfirm(activity) {
+  alertConfirm(action: string, activity) {
     let wrapperStyle = 'font-size: 16px !important;';
     let spanStyle = 'width: 150px !important; display: inline-block !important;';
     let titleSpanStyle = 'font-weight: 400 !important; text-align: right;';
     let valueSpanStyle = 'text-align: left;';
-    let points: number;
-    (activity.points !== null ? points = activity.points : points = this.activityPoints);
 
     swal({
       customClass: 'confirmation-modal',
@@ -60,32 +35,33 @@ export class AllowrewardsComponent implements OnInit {
         '<div class="modal-wrapper" style="' + wrapperStyle + '">' +
           '<div class="modal-activity-employee">' +
             '<span style="' + spanStyle + ' ' + titleSpanStyle + '">Medewerker:</span> ' +
-            '<span style="' + spanStyle + ' ' + valueSpanStyle + '">' + activity.employee + '</span>' + 
+            '<span style="' + spanStyle + ' ' + valueSpanStyle + '">' + activity.username + '</span>' + 
           '</div>' + 
           '<div class="modal-activity-name">' +
             '<span style="' + spanStyle + ' ' + titleSpanStyle + '">Activiteit:</span> ' +
-            '<span style="' + spanStyle + ' ' + valueSpanStyle + '">' + activity.name + '</span>' +
+            '<span style="' + spanStyle + ' ' + valueSpanStyle + '">' + activity.assignment[0].name + '</span>' +
           '</div>' +
           '<div class="modal-activity-points">' +
             '<span style="' + spanStyle + ' ' + titleSpanStyle + '">Punten:</span> ' +
-            '<span style="' + spanStyle + ' ' + valueSpanStyle + '">' + points + '</span>' +
+            '<span style="' + spanStyle + ' ' + valueSpanStyle + '">' + activity.assignment[0].credits + '</span>' +
           '</div>' +
         '</div>',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
+      confirmButtonColor: ( action === 'confirm' ? '#5cb85c' : action === 'deny' ? '#428bca' : null),
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Bevestig activiteit',
+      confirmButtonText: ( action === 'confirm' ? 'Activiteit goedkeuren' : action === 'deny' ? 'Activiteit afkeuren' : null),
       cancelButtonText: 'Annuleren',
       padding: 20,
       width: 350
     }).then((result) => {
       if (result.value) {
-        let index = this.activityList.indexOf(activity);
-        this.activityList.splice(index, 1);
+        let body = { assignmentId: activity.assignmentid, status: (action === 'confirm' ? 2 : action === 'deny' ? 3 : 1) };
+        this.restService.updateAssignmentStatus(body);
         swal(
-          'Bevestigd!',
-          'De activiteit is bevestigd en de punten zijn toegekend.',
-          'success'
+          ( action === 'confirm' ? 'Bevestigd!' : action === 'deny' ? 'Afgewezen!' : null),
+          ( action === 'confirm' ? 'De activiteit is bevestigd en de punten zijn toegekend.' :
+            action === 'deny' ? 'De activiteit is afgewezen. Er zijn geen punten toegekend' : null),
+          ( action === 'confirm' ? 'success' : action === 'deny' ? 'error' : null)
         );
       }
     });

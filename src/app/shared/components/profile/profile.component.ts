@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'profile',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  @Input() userData;
+
   user = {
     name: 'Langenaam Omtetestenjijweet',
     image: '../../../assets/images/avatar.png'
-  }
+  };
   
   constructor() { }
 
