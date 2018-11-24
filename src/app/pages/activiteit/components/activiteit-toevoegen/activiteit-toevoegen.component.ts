@@ -29,7 +29,7 @@ export class ActiviteitToevoegenComponent implements OnInit {
     swal({
       type: 'error',
       title: 'Oops...',
-      text: 'Gelieve een beschrijving in te vullen!',
+      text: 'Gelieve een korte verduidelijking in te vullen!',
     });
   }
 }
