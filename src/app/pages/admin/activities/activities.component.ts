@@ -1,64 +1,49 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2';
+import { RestService } from '../../../shared/services/rest.service';
 
 @Component({
   selector: 'app-activities',
   templateUrl: './activities.component.html',
-  styleUrls: ['./activities.component.scss']
+  styleUrls: ['./activities.component.scss'],
+  providers: [RestService]
 })
 export class ActivitiesComponent implements OnInit {
 
   newActivity = {
     name: '',
-    price: 0
+    description: '',
+    url: '',
+    credits: 0
+  };
+
+  chosenActivity = [];
+  activityData = [];
+
+  constructor(private restService: RestService) { 
+    this.restService.getAssignments().subscribe(
+      (obj) => Object.keys(obj).forEach( key => this.activityData.push( obj[key] ) ),
+      (err) => console.log('Error!', err),
+      () => console.log( this.activityData )
+    );
+   }
+
+  ngOnInit() { }
+
+  addAct() {
+    this.activityData.push(this.newActivity);
+    this.restService.createAssignment(this.newActivity);
+    this.newActivity = {
+      name: '',
+      description: '',
+      url: '',
+      credits: 0
+    };
   }
 
-  activities = [];
-
-  tempItem = [];
-
-  constructor() { this.initActivities(); }
-
-  ngOnInit() {
-  }
-
-  initActivities() {
-    //##VOORLOPOGE DUMMY DATA, DIT MOET VAN DE BACKEND KOMEN
-    this.activities.push(['Lezing geven', 20]);
-    this.activities.push(['Les geven', 15]);
-    this.activities.push(['Technologie onderzoeken', 30]);
-    this.activities.push(['Idee pitchen', 15]);
-    this.activities.push(['Dutje doen', 100]);
-  }
-
-  addActivity() {
-    let tempActivity = [];
-    tempActivity.push(this.newActivity.name);
-    tempActivity.push(this.newActivity.price);
-    this.activities.push(tempActivity);
-    this.newActivity.name = '';
-    this.newActivity.price = 0;
-
-    //###HIER NOG LOGICA OM HET ITEM AAN DE DATABASE TOE TE VOEGEN
-  }
-
-  deleteActivity(item) {
-    let newActivities = [];
-    for (let i = 0; i < this.activities.length; i++) {
-      if (item[0] !== this.activities[i][0]) {
-        newActivities.push(this.activities[i]);
-      }
-    }
-    this.activities = newActivities;
-
-    //###HIER NOG LOGICA OM HET ITEM UIT DE DATABASE TE VERWIJDEREN
-
-    return false;
-  }
-
-  openModalNG(modal, item) {
+  openModalNG(modal, activity) {
     modal.open();
-    this.tempItem = item;
+    this.chosenActivity = activity;
     return false;
   }
 
@@ -69,7 +54,9 @@ export class ActivitiesComponent implements OnInit {
   deleteModal(modal) {
     modal.close();
     this.onClose();
-    this.deleteActivity(this.tempItem);
+    this.activityData.splice( this.activityData.indexOf(this.chosenActivity) , 1 );
+    this.restService.deleteAssignment(this.chosenActivity);
+    this.chosenActivity = [];
   }
 
   onClose() {

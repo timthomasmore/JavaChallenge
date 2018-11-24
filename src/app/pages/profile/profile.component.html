@@ -1,22 +1,24 @@
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-9">
 
     <div class="row">
       <div class="col-md-12">
-        <profile></profile>
+        <profile [userData]="userData"></profile>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12">
-        <div class="card" style="height: 150px !important;"></div>
+        <card cardTitle='Punten per maand in het afgelopen jaar'>
+          <div echarts [options]="LineOption" [loading]="showloading" theme="dark" class="demo-chart"></div>
+        </card>
       </div>
     </div>
 
   </div>
 
-  <div class="col-md-4">
-    <profile-sidebar></profile-sidebar>
+  <div class="col-md-3">
+    <profile-sidebar [userData]="userData"></profile-sidebar>
   </div>
 
 </div>

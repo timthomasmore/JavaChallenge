@@ -22,8 +22,8 @@ export class RestService {
     return this.http.get<any>(this.ROOT_URL + 'rewards');
   }
 
-  getAssignments(): Observable<any> {
-    return this.http.get<any>(this.ROOT_URL + 'assignments');
+  getAssignments(status: string = null): Observable<any> {
+    return this.http.get<any>(this.ROOT_URL + 'assignments' + ( status ? ('/' + status) : '') );
   }
 
   getUserInfo() {
@@ -39,6 +39,19 @@ export class RestService {
     };
 
     return this.http.post<any>(this.ROOT_URL + 'users/addassignment', body).subscribe( res => console.log(res) );
+  }
+
+  createAssignment(body) {
+    return this.http.post<any>(this.ROOT_URL + 'assignments/create', body).subscribe( res => console.log(res) );
+  }
+
+
+  updateAssignmentStatus(body) {
+    return this.http.post<any>(this.ROOT_URL + 'assignments/approve', body).subscribe( res => console.log(res) );
+  }
+
+  deleteAssignment(assignment) {
+    return this.http.delete<any>(this.ROOT_URL + 'assignments/' + assignment._id + '/delete').subscribe( res => console.log(res) );
   }
 
   redeemReward(userid: string, rewardid: string) {
