@@ -20,7 +20,7 @@ export class AuthService {
     return this.http.post<any>(this.ROOT_URL + 'users/login', {email, password})
       .pipe(
         map(res => {
-          this.setSession(res)
+          this.setSession(res);
         })
       ).shareReplay();
   }
