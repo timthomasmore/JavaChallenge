@@ -1,0 +1,19 @@
+.assignment {
+    .wrapper {
+        padding-bottom: 12px;
+
+        .assignment-title {
+            font-size: 20px;
+            font-weight: 600;
+            text-transform: lowercase;
+            font-variant-caps: small-caps;
+        }
+    }
+
+    .confirm-wrapper {
+        .button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

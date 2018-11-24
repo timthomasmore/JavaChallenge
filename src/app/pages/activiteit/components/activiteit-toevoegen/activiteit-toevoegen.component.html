@@ -1,14 +1,39 @@
-<div class="col-md-12">
-  <card cardTitle="Voltooide activiteit">
-    <form class="form-group" #f="ngForm" (ngSubmit)="submitForm(f)">
-      <label class="control-label">Activiteit</label>
-      <input type="text" class="form-control" placeholder="Activiteit" name="activiteit" ngModel>
+<div class="col-md-12" *ngIf="assignments">
 
+  <card class="col-md-4" *ngFor="let a of assignments">
+    <div class="accordion">
 
-      <label class="control-label">Beschrijving</label>
-      <textarea class="form-control" placeholder="Beschrijving" name="beschrijving" ngModel></textarea> <br>
+      <!-- Accordion header -->
+      <div class="assignment">
+        <div class="wrapper" [id]="a._id" data-toggle="collapse" [attr.data-target]="'#' + a._id + 'content'" aria-expanded="false"
+          [attr.aria-controls]="a._id + 'content'">
+          <div class="assignment-title">{{a.name}}</div>
+        </div>
+    
+        <!-- Accordion content -->
+        <div [id]="a._id + 'content'" class="collapse" [attr.aria-labelledby]="a._id" [attr.data-parent]="a._id">
+          <div class="confirm-wrapper">
 
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+            <div class="assignment-description">
+              <span class="assignment-description">{{a.description}}</span> 
+            </div> <br>
+
+            <div class="assignment-points">
+              <span class="assignment-points">{{a.credits}} credits</span> 
+            </div> <br>
+
+            <div class="completed-beschrijving">
+              <span class="completed">Beschrijving </span> <textarea class="form-control" name="description" id="description" rows="3" #ref></textarea>
+            </div><br>
+    
+            <div class="button">
+              <button class="btn btn-primary" (click)="completeAssignment(a, ref.value)">Registreer</button><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </div>
   </card>
+
 </div>
