@@ -23,11 +23,12 @@ export class IndexComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.restService.getMonthlyRewards().subscribe(response => response);
     this.restService.getTotalUsers().subscribe(response => this.totalUsers = Object.values(response));
     this.monthlyPoints = [10, 52, 200, 334, 500, 330, 500, 600, 500, 250, 389, 829]; // Te vervangen door api call
     this.BarOption = this.chartsService.getBarOptionCustom(this.monthlyPoints);
     this.AnimationBarOption = this.chartsService.getAnimationBarOption();
     this.totalScoredPoints = 1500; // Te vervangen door api call
-    this.totalBoughtRewards = 137; // Te vervangen door api call
+    this.restService.getTotalRewards().subscribe(response => this.totalBoughtRewards = response);
   }
 }

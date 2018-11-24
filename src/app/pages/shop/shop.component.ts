@@ -12,6 +12,7 @@ export class ShopComponent implements OnInit {
 
   shop = [];
   modal = [];
+  userid = "5bf42b0055580543a4e815aa";
 
 
   constructor(private restService: RestService) {
@@ -37,7 +38,8 @@ export class ShopComponent implements OnInit {
   }
 
   buy(item) {
-    console.log(this.shop);
+    let answer;
+    this.restService.redeemReward(item._id).subscribe( res => alert(res) );
   }
 
   openModal(item) {
