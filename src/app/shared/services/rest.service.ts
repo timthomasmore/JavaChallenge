@@ -22,8 +22,8 @@ export class RestService {
     return this.http.get<any>(this.ROOT_URL + 'rewards');
   }
 
-  getAssignments(): Observable<any> {
-    return this.http.get<any>(this.ROOT_URL + 'assignments');
+ getAssignments(status: string = null): Observable<any> {
+    return this.http.get<any>(this.ROOT_URL + 'assignments' + (status ? ('/' + status) : ''));
   }
 
   getUserInfo() {
