@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import swal from 'sweetalert2';
+import {RestService} from '../../../shared/services/rest.service';
 
 @Component({
   selector: 'app-rewards',
   templateUrl: './rewards.component.html',
-  styleUrls: ['./rewards.component.scss']
+  styleUrls: ['./rewards.component.scss'],
+  providers: [RestService]
 })
 export class RewardsComponent implements OnInit {
 
@@ -30,7 +32,7 @@ export class RewardsComponent implements OnInit {
     'tincidunt leo vestibulum at. Pellentesque quis vestibulum ante. Cras finibus nisi vel sapien fermentum condimentum. Donec sit ' +
     'amet turpis tellus.';
 
-  constructor() { this.initShop(); }
+  constructor(private restService: RestService) { this.initShop(); }
 
   ngOnInit() {
   }
@@ -68,12 +70,12 @@ export class RewardsComponent implements OnInit {
 
   initShop() {
     //## HIER DE API LOGICA OM this.SHOP OP TE VULLEN MET ITEMS UIT DE DATABASE
-
+    this.restService.getRewards().subscribe(response => {this.shop = Object.values(response); console.log(response); })
     //TIJDELIJKE DUMMY DATA NU
-    this.shop.push(['Bak Bier', 25, 'assets/images/bier.png', this.tempLorem]);
+/*    this.shop.push(['Bak Bier', 25, 'assets/images/bier.png', this.tempLorem]);
     this.shop.push(['Cursus JAVA', 10, 'assets/images/Java.png', this.tempLorem]);
     this.shop.push(['Uitstap Barcelona', 50, 'assets/images/barcelona.png', this.tempLorem]);
-    this.shop.push(['Vrije dag', 20, 'assets/images/vrij.jpg', this.tempLorem]);
+    this.shop.push(['Vrije dag', 20, 'assets/images/vrij.jpg', this.tempLorem]);*/
   }
 
   openModal(item) {
