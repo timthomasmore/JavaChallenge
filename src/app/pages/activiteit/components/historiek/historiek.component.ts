@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {RestService} from "../../../../shared/services/rest.service";
+import {RestService} from '../../../../shared/services/rest.service';
 
 @Component({
   selector: 'app-historiek',
@@ -9,7 +9,7 @@ import {RestService} from "../../../../shared/services/rest.service";
 })
 export class HistoriekComponent implements OnInit {
 
-  showloading: boolean = false;
+  showloading: false;
 
   constructor(private restService: RestService) { }
 
