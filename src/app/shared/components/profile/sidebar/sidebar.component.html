@@ -1,17 +1,15 @@
 <div>
   <div class="sidebar">
     <div class="card sidebar-section">
-      <div class="sidebar-section-content">
-        <comparison-bar [begin]="points.currentMonth" [end]="points.previousMonth" [beginText]="'Punten deze maand'"
+      <div class="sidebar-section-content" *ngIf="points['currentMonth'] && points['previousMonth'] !== undefined">
+        <comparison-bar [begin]="points['currentMonth']" [end]="points['previousMonth']" [beginText]="'Punten deze maand'"
           [endText]="'Punten vorige maand'"></comparison-bar>
       </div>
     </div>
-
-    <div *ngIf="rewardsInfo[0]">plosje {{ rewardsInfo }}</div>
-
+    
     <div class="card sidebar-section">
-      <div class="sidebar-section-content">
-        <comparison-bar [begin]="points.currentMonth" [end]="points.average" [beginText]="'Punten deze maand'"
+      <div class="sidebar-section-content" *ngIf="points['currentMonth'] && points['average']">
+        <comparison-bar [begin]="points['currentMonth']" [end]="points['average']" [beginText]="'Punten deze maand'"
           [endText]="'Gemiddelde per maand'"></comparison-bar>
       </div>
     </div>
@@ -20,10 +18,10 @@
       <div class="sidebar-section-content">
         <div class="points-total-lifetime">
           <span class="total">Totaal punten</span>
-          <span class="value">{{ points.totalLifetime }}</span>
+          <span class="value">{{ points.total }}</span>
         </div>
         <div class="points-total-current">
-          <span class="value">{{ points.totalCurrent }}</span>
+          <span class="value">{{ userData[0]?.credits }}</span>
           <span class="total">Huidige punten</span>
         </div>
       </div>

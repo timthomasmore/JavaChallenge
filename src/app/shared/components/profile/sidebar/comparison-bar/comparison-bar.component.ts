@@ -16,13 +16,16 @@ export class ComparisonBarComponent implements OnInit {
   @Input()
   endText: string;
 
+  widthPercent: number;
   percent: number;
 
 
   constructor() { }
 
   ngOnInit() {
-    this.percent = Math.round( this.begin / this.end * 100 );
+    this.widthPercent = Math.round( this.begin / this.end * 100 );
+    this.widthPercent > 100 ? this.widthPercent = 100 : this.widthPercent = this.widthPercent;
+    this.percent = Math.round( (this.begin === 0 ? 1 : this.begin) / (this.end === 0 ? 1 : this.end) * 100 );
   }
 
 }

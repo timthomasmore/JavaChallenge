@@ -10,24 +10,27 @@ export class SidebarComponent implements OnInit {
 
   @Input() userData;
 
-  points = {
-    currentMonth: 65,
-    previousMonth: 130,
-    totalLifetime: 809,
-    totalCurrent: 411,
-    average: 110
-  };
+  points = [];
 
   recentRewards = [];
   rewardsInfo = [];
   recentActivities = [];
   activitiesInfo = [];
 
-  percent = Math.round( this.points.currentMonth / this.points.previousMonth * 100 );
-
   constructor(private restService: RestService) { 
     this.recentRewards.push(null);
     this.recentActivities.push(null);
+
+    this.restService.getTotalEarned().subscribe( d => this.points['total'] = d);
+    this.restService.getMonthlyEarned().subscribe( d => {
+      let total = 0;
+      for (let i of d) {
+        total += i;
+      }
+      this.points['currentMonth'] = d[0];
+      this.points['previousMonth'] = d[1];
+      this.points['average'] = total / d.length;
+    });
   }
 
   ngOnInit() { }
@@ -60,9 +63,6 @@ export class SidebarComponent implements OnInit {
           checkedIds.push(item.assignmentid);
         }
       }
-
-      console.log('5 Recentste approved act', this.recentActivities);
-      console.log('actInfo', this.activitiesInfo);
     }
 
     return true;
