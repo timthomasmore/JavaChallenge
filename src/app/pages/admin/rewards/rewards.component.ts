@@ -20,7 +20,7 @@ export class RewardsComponent implements OnInit {
 
   shop = [];
   modal = [];
-  tempItem = [];
+  tempItem;
 
   constructor(private restService: RestService) {
     this.initShop();
@@ -30,31 +30,25 @@ export class RewardsComponent implements OnInit {
   }
 
   addItem() {
-    this.tempItem = [];
-    this.tempItem.push(this.newItem.name);
-    this.tempItem.push(this.newItem.credits);
-    this.tempItem.push('assets/images/placeholder.png'); //tijdelijk een andere image, moet nog gefixed worden
-    //this.tempItem.push(this.newItem.picture);
-    this.tempItem.push(this.newItem.description);
-    this.shop.push(this.tempItem);
+    this.restService.createReward(this.newItem);
+    this.initShop();
+
     this.newItem.name = '';
     this.newItem.credits = 0;
     this.newItem.description = '';
     this.newItem.photo = '';
-
-    this.restService.createReward(this.tempItem);
   }
 
   deleteItem(item) {
     let newShop = [];
     for (let i = 0; i < this.shop.length; i++) {
-      if (item[0] !== this.shop[i][0]) {
+      if (item.name !== this.shop[i].name) {
         newShop.push(this.shop[i]);
       }
     }
     this.shop = newShop;
 
-    //###HIER NOG LOGICA OM HET ITEM UIT DE DATABASE TE VERWIJDEREN
+    this.restService.deleteReward(item);
 
     return false;
   }

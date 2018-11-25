@@ -77,4 +77,8 @@ export class RestService {
   createReward(body) {
     return this.http.post<any>(this.ROOT_URL + 'rewards/create', body).subscribe( res => console.log(res) );
   }
+
+  deleteReward(reward) {
+    return this.http.delete<any>(this.ROOT_URL + 'rewards/' + reward._id + '/delete').subscribe( res => console.log(res) );
+  }
 }
