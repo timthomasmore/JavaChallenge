@@ -57,6 +57,14 @@ export class RestService {
     return this.http.delete<any>(this.ROOT_URL + 'assignments/' + assignment._id + '/delete').subscribe( res => console.log(res) );
   }
 
+  getRewardDetails(rewardId) {
+    return this.http.get<any>(this.ROOT_URL + 'rewards/reward/' + rewardId);
+  }
+
+  getAssignmentDetails(assignmentId) {
+    return this.http.get<any>(this.ROOT_URL + 'assignments/' + assignmentId);
+  }
+
   redeemReward(rewardid: string) {
     const body = {
       rewardid: rewardid,

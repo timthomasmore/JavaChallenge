@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RestService } from '../../../services/rest.service';
 
 @Component({
   selector: 'profile-sidebar',
@@ -17,31 +18,54 @@ export class SidebarComponent implements OnInit {
     average: 110
   };
 
-  rewardList = [
-    {name: 'Bak bier', date: new Date(), points: 10},
-    {name: 'Bon', date: new Date(), points: 20},
-    {name: 'Reis', date: new Date(), points: 15},
-    {name: 'Fles champagne', date: new Date(), points: 8}
-  ];
+  recentRewards = [];
+  rewardsInfo = [];
+  recentActivities = [];
+  activitiesInfo = [];
 
-  activityList = [
-    {name: 'Blogpost schrijven', date: new Date(), points: 10},
-    {name: 'Presentatie', date: new Date(), points: 20},
-    {name: 'Nieuwe technologie onderzocht', date: new Date(), points: 15},
-    {name: 'Bijwonen conferentie', date: new Date(), points: 8},
-    {name: 'Meetup', date: new Date(), points: 8},
-    {name: 'Andere', date: new Date(), points: 8}
-  ];
-  
-  
   percent = Math.round( this.points.currentMonth / this.points.previousMonth * 100 );
 
-  constructor() { 
-    this.activityList = this.activityList.splice(0, 5);
-    this.rewardList = this.rewardList.splice(0, 5);
+  constructor(private restService: RestService) { 
+    this.recentRewards.push(null);
+    this.recentActivities.push(null);
   }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  getRecent(list, type) {
+    let checkedIds = [];
+
+    if (type === 'rewards' && this.recentRewards[0] === null) {
+      this.recentRewards = list;
+      this.recentRewards = this.recentRewards.reverse().splice(0, 5);
+
+      for ( let item of this.recentRewards) {
+        if ( checkedIds.indexOf(item.rewardid) === -1 ) {
+          this.restService.getRewardDetails(item.rewardid).subscribe(d => this.rewardsInfo[d._id] = d );
+          checkedIds.push(item.rewardid);
+        }
+      }
+    }
+
+    if (type === 'activities' && this.recentActivities[0] === null) {
+      for (let item of list) {
+        item.status === 2 ? this.recentActivities.push(item) : item = item;
+      }
+
+      this.recentActivities = this.recentActivities.reverse().splice(0, 5);
+
+      for ( let item of this.recentActivities) {
+        if ( checkedIds.indexOf(item.assignmentid) === -1 ) {
+          this.restService.getAssignmentDetails(item.assignmentid).subscribe(d => this.activitiesInfo[d._id] = d );
+          checkedIds.push(item.assignmentid);
+        }
+      }
+
+      console.log('5 Recentste approved act', this.recentActivities);
+      console.log('actInfo', this.activitiesInfo);
+    }
+
+    return true;
   }
 
 }
