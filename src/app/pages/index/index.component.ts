@@ -30,5 +30,7 @@ export class IndexComponent implements OnInit {
     this.AnimationBarOption = this.chartsService.getAnimationBarOption();
     this.restService.getTotalEarned().subscribe(response => this.totalScoredPoints = response);
     this.restService.getTotalRewards().subscribe(response => this.totalBoughtRewards = response);
+
+    console.log(this.totalScoredPoints);
   }
 }

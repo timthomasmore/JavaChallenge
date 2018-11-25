@@ -12,6 +12,10 @@
   font-weight:bold;
   font-size: 1.4em;
   padding:5px 0 5px 0;
+
+  :hover{
+    cursor: pointer;
+  }
 }
 
 .productprice {
@@ -27,6 +31,10 @@
 .productimage{
   width: 460px;
   height: 250px;
+
+  :hover{
+    cursor: pointer;
+  }
 }
 
 body.modal-open .background-container{

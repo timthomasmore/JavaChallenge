@@ -1,22 +1,29 @@
 import { Component, Input } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
 import {AuthService} from "../../services/auth.service";
+import {ChartsService} from '../../services/charts.service';
+import {RestService} from '../../services/rest.service';
 
 @Component({
   selector: 'pages-top',
   templateUrl: './pages-top.component.html',
   styleUrls: ['./pages-top.component.scss'],
+  providers: [RestService]
 })
 export class PagesTopComponent {
   avatarImgSrc: string = 'assets/images/avatar.png';
-  userName: string = 'Folisise Chosielie';
-  userPost: string = 'Musician, Player';
-
+  userName: string = '';
+  userPost: string = '';
+  userCredits: string = '';
+  userData = [];
 
   sidebarToggle: boolean = true;
   tip = { ring: true, email: true };
 
-  constructor(private _globalService: GlobalService, private authService: AuthService) { }
+  constructor(private _globalService: GlobalService, private authService: AuthService,
+              private restService: RestService) { this.getUserData(); }
+
+
 
   public _sidebarToggle() {
     /* this._globalService.sidebarToggle$.subscribe(sidebarToggle => {
@@ -41,5 +48,20 @@ export class PagesTopComponent {
   signOut() {
     console.log('Signing out');
     this.authService.logout();
+  }
+
+  getUserData() {
+    console.log('hallo');
+
+    this.restService.getUserInfo().subscribe(
+      (obj) => Object.keys(obj).forEach( key => this.userData[key] = obj[key] ),
+      (err) => console.log('Error', err),
+      () => this.initUserData( this.userData ) );
+  }
+
+  initUserData(d) {
+    this.userName = d[0].name;
+    this.userPost = d[0].email;
+    this.userCredits = d[0].credits;
   }
 }
