@@ -10,10 +10,10 @@ export class ChartsService {
   constructor() {
 
     //overwrite baroptiondata
-    let months = ['dec','nov','oct','sept','aug','jul','jun','may','apr','mar','feb','jan'];
+    let months = ['jan', 'feb', 'maa', 'apr', 'mei', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
     months = months.concat(months);
     let month = new Date().getMonth();
-    this.BarOptionCustom.xAxis[0].data = months.splice(11-month,12);
+    this.BarOptionCustom.xAxis[0].data = months.splice(month+1,12);
 
     for (let i = 0; i < 100; i++) {
       this.xAxisData.push('Type ' + i);
