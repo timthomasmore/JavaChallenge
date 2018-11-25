@@ -1,6 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { ChartsService } from '../../shared/services/charts.service';
 import { RestService } from '../../shared/services/rest.service';
+import {forEach} from "@angular/router/src/utils/collection";
 
 
 @Component({
@@ -12,7 +13,7 @@ import { RestService } from '../../shared/services/rest.service';
 export class ProfileComponent implements OnInit {
 
   points = [
-    { date: new Date(2018, 1, 1), points: 10},
+    /**{ date: new Date(2018, 1, 1), points: 10},
     { date: new Date(2018, 1, 3), points: 10},
     { date: new Date(2018, 1, 3), points: 1},
     { date: new Date(2018, 2, 3), points: 10},
@@ -53,7 +54,7 @@ export class ProfileComponent implements OnInit {
     { date: new Date(2018, 11, 1), points: 10},
     { date: new Date(2018, 12, 1), points: 10},
     { date: new Date(2018, 12, 1), points: 10},
-    { date: new Date(2018, 12, 29), points: 10}
+    { date: new Date(2018, 12, 29), points: 10}*/
   ];
 
   userData = [];
@@ -69,6 +70,11 @@ export class ProfileComponent implements OnInit {
   AnimationBarOption;
 
   constructor(private chartsService: ChartsService, private restService: RestService, private ngZone: NgZone) {
+
+    this.restService.getMonthlyEarnedUser().subscribe(res => {console.log(res);
+                                                                    this.points = this.convertpoints(res);
+                                                                    this.setupGraph();});
+
     this.ngZone.run( () => {
       this.restService.getUserInfo().subscribe(
         (obj) => Object.keys(obj).forEach( key => this.userData[key] = obj[key] ),
@@ -81,19 +87,25 @@ export class ProfileComponent implements OnInit {
         () => this.initRewardsData( this.rewardsData ) );
     });
 
-    // Willekeurige test data
+
+  }
+
+  ngOnInit() { }
+
+  setupGraph(){// Willekeurige test data
     let dat = new Date();
     let xaxDate = [];
     for (let i = 1; i <= 12; i++) {
       xaxDate.push((dat.getMonth() + 1) + '/' + dat.getFullYear() );
       dat.setMonth(dat.getMonth() - 1);
     }
-    this.points.sort(function(a, b) { return a.date.getTime() - b.date.getTime(); } );
-    for (let i = 0; i < this.points.length; i++) {
-      if ( this.points[i].date > new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 12, this.currentDate.getDate() ) ) {
-        this.shownData[this.points[i].date.getMonth() + 1] += this.points[i].points;
-      }
+
+  this.points.sort(function(a, b) { return a.date.getTime() - b.date.getTime(); } );
+  for (let i = 0; i < this.points.length; i++) {
+    if ( this.points[i].date > new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 12, this.currentDate.getDate() ) ) {
+    this.shownData[this.points[i].date.getMonth() + 1] += this.points[i].points;
     }
+  }
 
     let xdd = [];
     for ( const i of xaxDate) {
@@ -102,9 +114,7 @@ export class ProfileComponent implements OnInit {
     }
 
     this.LineOption = this.chartsService.getLineOption(xdd, xaxDate);
-  }
-
-  ngOnInit() { }
+}
 
   initRewardsData(d) {
     console.log( d );
@@ -112,6 +122,13 @@ export class ProfileComponent implements OnInit {
 
   initUserData(d) {
     console.log( d );
+  }
+
+  convertpoints(points){
+    points.forEach(function(data){
+      data.date = new Date(data.date);
+    })
+    return points;
   }
 
 }

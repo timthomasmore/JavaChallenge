@@ -82,6 +82,12 @@ export class RestService {
     return this.http.get<any>(this.ROOT_URL + 'users/monthlyearned');
   }
 
+  getMonthlyEarnedUser() {
+    console.log('monthlyworks');
+    const user_id = jwt_decode( localStorage.getItem('id_token') )['sub'];
+    return this.http.get<any>(this.ROOT_URL + 'users/monthlyuser/' + user_id);
+  }
+
   createReward(body) {
     return this.http.post<any>(this.ROOT_URL + 'rewards/create', body).subscribe( res => console.log(res) );
   }
