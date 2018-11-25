@@ -125,7 +125,7 @@ export class ProfileComponent implements OnInit {
     //console.log( d );
   }
 
-  convertpoints(points){
+  convertpoints(points) {
     points.forEach(function(data){
       data.date = new Date(data.date);
     })

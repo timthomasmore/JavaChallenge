@@ -1,4 +1,12 @@
 <div class="background-container">
+  <div class="card card-block tip-card">
+    <button class="tip-ico tip-ico-info">
+      <i class="fas fa-star"></i>
+    </button>
+    <div class="tip-msg">
+      <span>Beschikbare credits: {{userCredits}}</span>
+    </div>
+  </div>
 
 <div class="col-md-2 column productbox" *ngFor="let item of shop">
   <img src="{{item.photo}}" class="productimage img-responsive" (click)="openModal(item)">

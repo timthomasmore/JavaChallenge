@@ -13,9 +13,12 @@ export class ShopComponent implements OnInit {
   shop = [];
   modal = [];
   res = '';
+  userCredits:  '';
+  userData = [];
 
   constructor(private restService: RestService) {
     this.initShop();
+    this.getUserData();
   }
 
   ngOnInit() {
@@ -41,10 +44,21 @@ export class ShopComponent implements OnInit {
     document.getElementById('confirmButton').click();
   }
 
+  getUserData() {
+    this.restService.getUserInfo().subscribe(
+      (obj) => Object.keys(obj).forEach( key => this.userData[key] = obj[key] ),
+      (err) => console.log('Error', err),
+      () => this.initUserData( this.userData ) );
+  }
+
   pageReload() {
     //TIJDELIJKE FIX OMDAT HET AANTAL PUNTEN IN HET GEBRUIKERS PROFIEL NOG NIET
     //UPDATE NA HET KOPEN VBAN EEN ITEM
     //MOGELIJKE FIX? ENKEL DIE COMPONENT HERLADEN
     location.reload();
+  }
+
+  initUserData(d) {
+    this.userCredits = d[0].credits;
   }
 }

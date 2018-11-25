@@ -63,7 +63,5 @@ export class PagesTopComponent {
     this.userPost = d[0].email;
     this.userCredits = d[0].credits;
     this.avatarImgSrc = d[0].photoUrl;
-
-    //console.log(d);
   }
 }
