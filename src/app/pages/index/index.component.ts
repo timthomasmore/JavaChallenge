@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ChartsService} from "../../shared/services/charts.service";
+import {ChartsService} from '../../shared/services/charts.service';
 import {RestService} from '../../shared/services/rest.service';
 
 @Component({
@@ -9,7 +9,7 @@ import {RestService} from '../../shared/services/rest.service';
   providers: [ChartsService, RestService]
 })
 export class IndexComponent implements OnInit {
-  showloading: boolean = false;
+  showloading = false;
 
   public AnimationBarOption;
 

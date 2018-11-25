@@ -23,6 +23,7 @@ export class ShopComponent implements OnInit {
 
   initShop() {
     this.restService.getRewards().subscribe(response => {this.shop = Object.values(response); console.log(response); });
+    console.log(this.shop);
   }
 
   buy(item) {

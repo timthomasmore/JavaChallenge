@@ -1,7 +1,7 @@
 <div class="background-container">
 
 <div class="col-md-2 column productbox" *ngFor="let item of shop">
-  <img src="{{item.foto}}" class="productimage img-responsive" (click)="openModal(item)">
+  <img src="{{item.photo}}" class="productimage img-responsive" (click)="openModal(item)">
   <div class="producttitle">{{item.name}}</div>
   <div class="productprice">
     <div class="pull-right">
@@ -21,8 +21,8 @@
           <h4 class="modal-title" id="myModalLabel">{{modal.name}}</h4>
         </div>
         <div class="modal-body">
-          <img src="{{modal.foto}}" class="img-responsive">
-          {{modal.beschrijving}}
+          <img src="{{modal.photo}}" class="img-responsive">
+          {{modal.description}}
           <hr />
           <div class="pricetext">Punten: {{modal.credits}}</div>
         </div>
