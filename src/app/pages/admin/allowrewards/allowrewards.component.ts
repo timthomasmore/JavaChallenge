@@ -61,8 +61,9 @@ export class AllowrewardsComponent implements OnInit {
     }).then((result) => {
       if (result.value) {
         this.activityList.splice( this.activityList.indexOf(activity), 1 );
-        let body = { assignmentId: activity.id, status: (action === 'confirm' ? 2 : action === 'deny' ? 3 : 1) };
+        let body = { assignmentId: activity.assignmentid, status: (action === 'confirm' ? 2 : action === 'deny' ? 3 : 1),userid: activity._id, completedassignmentid: activity.id };
         this.restService.updateAssignmentStatus(body);
+        console.log(activity);
         swal(
           ( action === 'confirm' ? 'Bevestigd!' : action === 'deny' ? 'Afgewezen!' : null),
           ( action === 'confirm' ? 'De activiteit is bevestigd en de punten zijn toegekend.' :

@@ -20,7 +20,7 @@ export class HistoriekComponent implements OnInit {
     this.restService.getUserAllAssignments().subscribe(
       (obj) => Object.keys(obj).forEach(key => this.assignments.push(obj[key])),
       (err) => console.log('Error', err));
-    console.log(this.assignments);
+    //console.log(this.assignments);
   }
 
 }

@@ -21,7 +21,7 @@ export class RightConfigComponent implements OnInit {
   }
 
   signOut() {
-    console.log('Signing out');
+    //console.log('Signing out');
     this.authService.logout();
   }
 }

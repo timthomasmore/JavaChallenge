@@ -71,9 +71,10 @@ export class ProfileComponent implements OnInit {
 
   constructor(private chartsService: ChartsService, private restService: RestService, private ngZone: NgZone) {
 
-    this.restService.getMonthlyEarnedUser().subscribe(res => {console.log(res);
+    this.restService.getMonthlyEarnedUser().subscribe(res => {//console.log(res);
                                                                     this.points = this.convertpoints(res);
                                                                     this.setupGraph();});
+
 
     this.ngZone.run( () => {
       this.restService.getUserInfo().subscribe(
@@ -81,7 +82,7 @@ export class ProfileComponent implements OnInit {
         (err) => console.log('Error', err),
         () => this.initUserData( this.userData ) );
 
-      this.restService.getRewards().subscribe( 
+      this.restService.getRewards().subscribe(
         (obj) => Object.keys(obj).forEach( key => this.rewardsData[key] = obj[key] ),
         (err) => console.log('Error', err),
         () => this.initRewardsData( this.rewardsData ) );
@@ -117,11 +118,11 @@ export class ProfileComponent implements OnInit {
 }
 
   initRewardsData(d) {
-    console.log( d );
+    //console.log( d );
   }
 
   initUserData(d) {
-    console.log( d );
+    //console.log( d );
   }
 
   convertpoints(points){

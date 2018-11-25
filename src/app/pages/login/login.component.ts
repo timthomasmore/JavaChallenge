@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
     if (this.user.email !== '' || this.user.email !== '') {
       this.authService.login(this.user.email, this.user.password).subscribe(
         () => {
-          console.log('user is logged in');
+          //console.log('user is logged in');
           this.router.navigate(['pages/index']);
         }
       );

@@ -24,13 +24,13 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.restService.getTotalUsers().subscribe(response => this.totalUsers = Object.values(response));
-    this.restService.getMonthlyEarned().subscribe(response => console.log(response));
+    //this.restService.getMonthlyEarned().subscribe(response => console.log(response));
     this.restService.getMonthlyEarned().subscribe(response => this.BarOption = this.chartsService.getBarOptionCustom(response));
     //this.BarOption = this.chartsService.getBarOptionCustom(this.monthlyPoints);
     this.AnimationBarOption = this.chartsService.getAnimationBarOption();
     this.restService.getTotalEarned().subscribe(response => this.totalScoredPoints = response);
     this.restService.getTotalRewards().subscribe(response => this.totalBoughtRewards = response);
 
-    console.log(this.totalScoredPoints);
+    //console.log(this.totalScoredPoints);
   }
 }

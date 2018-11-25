@@ -21,15 +21,22 @@ export class SidebarComponent implements OnInit {
     this.recentRewards.push(null);
     this.recentActivities.push(null);
 
-    this.restService.getTotalEarned().subscribe( d => this.points['total'] = d);
-    this.restService.getMonthlyEarned().subscribe( d => {
-      let total = 0;
-      for (let i of d) {
-        total += i;
-      }
-      this.points['currentMonth'] = d[0];
-      this.points['previousMonth'] = d[1];
-      this.points['average'] = total / d.length;
+    //this.restService.getTotalEarned().subscribe( d => this.points['total'] = d);
+    //this.restService.getMonthlyEarned().subscribe( d => {
+      //let total = 0;
+      //for (let i of d) {
+        //total += i;
+      //}
+      //this.points['currentMonth'] = d[0];
+      //this.points['previousMonth'] = d[1];
+      //this.points['average'] = total / d.length;
+    //});
+    //this.restService.getUserAverage().subscribe( d => {this.points['average'] = d; console.log(d)});
+
+    this.restService.getProfileData().subscribe( d => {this.points['average'] = d.average;
+    this.points['total'] = d.totalLifetime;
+    this.points['currentMonth'] = d.currentMonth;
+    this.points['previousMonth'] = d.previousMonth;
     });
   }
 

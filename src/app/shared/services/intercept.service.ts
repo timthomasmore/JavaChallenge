@@ -8,7 +8,7 @@ export class InterceptService implements HttpInterceptor {
   intercept(req: HttpRequest<any>,
             next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('Intercepting request');
+    //console.log('Intercepting request');
 
     const idToken = localStorage.getItem("id_token");
 

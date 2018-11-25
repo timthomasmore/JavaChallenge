@@ -83,9 +83,13 @@ export class RestService {
   }
 
   getMonthlyEarnedUser() {
-    console.log('monthlyworks');
     const user_id = jwt_decode( localStorage.getItem('id_token') )['sub'];
     return this.http.get<any>(this.ROOT_URL + 'users/monthlyuser/' + user_id);
+  }
+
+  getProfileData() {
+    const user_id = jwt_decode( localStorage.getItem('id_token') )['sub'];
+    return this.http.get<any>(this.ROOT_URL + 'users/profiledata/' + user_id);
   }
 
   createReward(body) {
@@ -99,5 +103,10 @@ export class RestService {
   getUserAllAssignments() {
     let id = jwt_decode( localStorage.getItem('id_token') )['sub'];
     return this.http.get<any>(this.ROOT_URL + 'assignments/userallassignments/' + id);
+  }
+
+  getUserAverage() {
+    let id = jwt_decode( localStorage.getItem('id_token') )['sub'];
+    return this.http.get<any>(this.ROOT_URL + 'users/averagepoints/' + id);
   }
 }

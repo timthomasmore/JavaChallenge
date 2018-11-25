@@ -45,12 +45,12 @@ export class PagesTopComponent {
   }
 
   signOut() {
-    console.log('Signing out');
+    //console.log('Signing out');
     this.authService.logout();
   }
 
   getUserData() {
-    console.log('hallo');
+    //console.log('hallo');
 
     this.restService.getUserInfo().subscribe(
       (obj) => Object.keys(obj).forEach( key => this.userData[key] = obj[key] ),
@@ -64,6 +64,6 @@ export class PagesTopComponent {
     this.userCredits = d[0].credits;
     this.avatarImgSrc = d[0].photoUrl;
 
-    console.log(d);
+    //console.log(d);
   }
 }

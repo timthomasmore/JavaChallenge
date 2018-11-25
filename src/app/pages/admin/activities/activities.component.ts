@@ -24,7 +24,7 @@ export class ActivitiesComponent implements OnInit {
     this.restService.getAssignments().subscribe(
       (obj) => Object.keys(obj).forEach( key => this.activityData.push( obj[key] ) ),
       (err) => console.log('Error!', err),
-      () => console.log( this.activityData )
+      //() => console.log( this.activityData )
     );
    }
 

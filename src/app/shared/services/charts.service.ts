@@ -217,7 +217,7 @@ export class ChartsService {
       this.customData.push(args[i]);
     }
 
-    console.log(this.BarOptionCustom.xAxis[0].data);
+    //console.log(this.BarOptionCustom.xAxis[0].data);
     return this.BarOptionCustom;
   }
 }
