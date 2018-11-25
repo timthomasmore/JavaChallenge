@@ -2,7 +2,7 @@
   <div class="col-md-6 animated fadeIn" *ngFor="let a of assignments">
     <div class="card card-block tip-card">
       <div class="tip-msg">
-        <h3>{{a.assignment}} punten</h3>
+        <h3>{{a.assignment[0]?.credits}} punten</h3>
         <span>Geef een lezing over Angular 6</span>
       </div>
       <button class="tip-ico" [ngClass]="{'tip-ico-warning': a.status==1, 'tip-ico-success': a.status==2, 'tip-ico-danger': a.status==3}">
