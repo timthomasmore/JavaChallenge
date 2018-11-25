@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../../../shared/services/rest.service';
 
 @Component({
@@ -11,10 +11,16 @@ export class HistoriekComponent implements OnInit {
 
   showloading: false;
 
-  constructor(private restService: RestService) { }
+  assignments = [];
+
+  constructor(private restService: RestService) {
+  }
 
   ngOnInit() {
-    this.restService.getUserAllAssignments().subscribe((res) => console.log(res));
+    this.restService.getUserAllAssignments().subscribe(
+      (obj) => Object.keys(obj).forEach(key => this.assignments.push(obj[key])),
+      (err) => console.log('Error', err));
+    console.log(this.assignments);
   }
 
 }

@@ -1,56 +1,14 @@
 <div class="row">
-  <div class="col-md-6 animated fadeIn">
+  <div class="col-md-6 animated fadeIn" *ngFor="let a of assignments">
     <div class="card card-block tip-card">
       <div class="tip-msg">
-        <h3>5 punten</h3>
+        <h3>{{a.assignment}} punten</h3>
         <span>Geef een lezing over Angular 6</span>
       </div>
-      <button class="tip-ico tip-ico-success">
-        <i class="fas fa-check"></i>
-      </button>
-    </div>
-  </div>
-  <div class="col-md-6 animated fadeIn">
-    <div class="card card-block tip-card">
-      <div class="tip-msg">
-        <h3>5 punten</h3>
-        <span>Geef een lezing over Angular 6</span>
-      </div>
-      <button class="tip-ico tip-ico-danger">
-        <i class="fas fa-ban"></i>
-      </button>
-    </div>
-  </div>
-  <div class="col-md-6 animated fadeIn">
-    <div class="card card-block tip-card">
-      <div class="tip-msg">
-        <h3>5 punten</h3>
-        <span>Geef een lezing over Angular 6</span>
-      </div>
-      <button class="tip-ico tip-ico-success">
-        <i class="fas fa-check"></i>
-      </button>
-    </div>
-  </div>
-  <div class="col-md-6 animated fadeIn">
-    <div class="card card-block tip-card">
-      <div class="tip-msg">
-        <h3>5 punten</h3>
-        <span>Geef een lezing over Angular 6</span>
-      </div>
-      <button class="tip-ico tip-ico-danger">
-        <i class="fas fa-ban"></i>
-      </button>
-    </div>
-  </div>
-  <div class="col-md-6 animated fadeIn">
-    <div class="card card-block tip-card">
-      <div class="tip-msg">
-        <h3>5 punten</h3>
-        <span>Geef een lezing over Angular 6</span>
-      </div>
-      <button class="tip-ico tip-ico-danger">
-        <i class="fas fa-ban"></i>
+      <button class="tip-ico" [ngClass]="{'tip-ico-warning': a.status==1, 'tip-ico-success': a.status==2, 'tip-ico-danger': a.status==3}">
+        <i class="fas fa-spinner" *ngIf="a.status===1"></i>
+        <i class="fas fa-check" *ngIf="a.status===2">></i>
+        <i class="fas fa-ban" *ngIf="a.status===3">></i>
       </button>
     </div>
   </div>
