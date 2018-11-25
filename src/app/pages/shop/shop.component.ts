@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../../shared/services/rest.service';
-import {ChartsService} from '../charts/components/echarts/charts.service';
 
 @Component({
   selector: 'app-shop',
@@ -8,42 +7,36 @@ import {ChartsService} from '../charts/components/echarts/charts.service';
   styleUrls: ['./shop.component.scss'],
   providers: [RestService]
 })
+
 export class ShopComponent implements OnInit {
 
   shop = [];
   modal = [];
-  userid = "5bf42b0055580543a4e815aa";
-
+  res = '';
 
   constructor(private restService: RestService) {
-
     this.initShop();
-
-
   }
 
   ngOnInit() {
   }
 
   initShop() {
-    //## HIER DE API LOGICA OM this.SHOP OP TE VULLEN MET ITEMS UIT DE DATABASE
     this.restService.getRewards().subscribe(response => {this.shop = Object.values(response); console.log(response); });
-
-    //TIJDELIJKE DUMMY DATA NU
-    console.log();
-    /*this.shop.push(["Bak Bier", 25, "assets/images/bier.png", this.tempLorem]);
-    this.shop.push(["Cursus JAVA", 10, "assets/images/Java.png", this.tempLorem]);
-    this.shop.push(["Uitstap Barcelona", 50, "assets/images/barcelona.png", this.tempLorem]);
-    this.shop.push(["Vrije dag", 20, "assets/images/vrij.jpg", this.tempLorem]);*/
   }
 
   buy(item) {
-    let answer;
-    this.restService.redeemReward(item._id).subscribe( res => alert(res) );
+    this.restService.redeemReward(item._id).subscribe( res => this.confirmModal(item, res) );
   }
 
   openModal(item) {
     this.modal = item;
     document.getElementById('clickButton').click();
+  }
+
+  confirmModal(item, res) {
+    this.res = res;
+    this.modal = item;
+    document.getElementById('confirmButton').click();
   }
 }

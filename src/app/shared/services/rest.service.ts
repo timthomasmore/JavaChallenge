@@ -45,12 +45,9 @@ export class RestService {
     return this.http.post<any>(this.ROOT_URL + 'users/addassignment', body).subscribe( res => console.log(res) );
   }
 
-
-
   createAssignment(body) {
     return this.http.post<any>(this.ROOT_URL + 'assignments/create', body).subscribe( res => console.log(res) );
   }
-
 
   updateAssignmentStatus(body) {
     return this.http.post<any>(this.ROOT_URL + 'assignments/approve', body).subscribe( res => console.log(res) );
@@ -73,7 +70,11 @@ export class RestService {
     return this.http.get<any>(this.ROOT_URL + 'users/totalearned');
   }
 
-  getMonthlyEarned(){
+  getMonthlyEarned() {
     return this.http.get<any>(this.ROOT_URL + 'users/monthlyearned');
+  }
+
+  createReward(body) {
+    return this.http.post<any>(this.ROOT_URL + 'rewards/create', body).subscribe( res => console.log(res) );
   }
 }
