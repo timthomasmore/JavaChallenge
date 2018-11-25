@@ -82,7 +82,7 @@ export class RestService {
     return this.http.delete<any>(this.ROOT_URL + 'rewards/' + reward._id + '/delete').subscribe( res => console.log(res) );
   }
 
-  getUserAllAssignments(){
+  getUserAllAssignments() {
     const body = {
       id: jwt_decode( localStorage.getItem('id_token') )['sub']
     };

@@ -4,19 +4,19 @@ import {AuthService} from '../../services/auth.service';
 import {RestService} from '../../services/rest.service';
 
 @Component({
-  selector: 'pages-top',
+  selector: './pages-top',
   templateUrl: './pages-top.component.html',
   styleUrls: ['./pages-top.component.scss'],
   providers: [RestService]
 })
 export class PagesTopComponent {
-  avatarImgSrc: string = 'assets/images/avatar.png';
-  userName: string = '';
-  userPost: string = '';
-  userCredits: string = '';
+  avatarImgSrc: '';
+  userName:  '';
+  userPost:  '';
+  userCredits:  '';
   userData = [];
 
-  sidebarToggle: boolean = true;
+  sidebarToggle: true;
   tip = { ring: true, email: true };
 
   constructor(private _globalService: GlobalService, private authService: AuthService,
@@ -62,5 +62,8 @@ export class PagesTopComponent {
     this.userName = d[0].name;
     this.userPost = d[0].email;
     this.userCredits = d[0].credits;
+    this.avatarImgSrc = d[0].photoUrl;
+
+    console.log(d);
   }
 }
