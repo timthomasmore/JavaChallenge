@@ -3,8 +3,8 @@
 
     <div class="accordion">
       <!-- Accordion header -->
-      <div class="activity" [ngClass]="{'active': activity.active}" *ngFor="let activity of activityList">
-        <div class="wrapper" [id]="activity.id" data-toggle="collapse" [attr.data-target]="'#' + activity.id + 'cont'" aria-expanded="false" [attr.aria-controls]="activity.id + 'cont'" (click)="activity.active = !activity.active">
+      <div class="activity" *ngFor="let activity of activityList">
+        <div class="wrapper" [id]="activity.id" data-toggle="collapse" [attr.data-target]="'#' + activity.id + 'cont'" aria-expanded="false" [attr.aria-controls]="activity.id + 'cont'">
           <div class="activity-name">{{activity.assignment[0].name}}</div>
           <div class="employee-name">{{activity.uesrname}}</div>
           <div class="date-submitted">{{activity.date | date:'dd/MM/yyyy'}}</div>

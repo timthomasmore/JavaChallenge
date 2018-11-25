@@ -14,7 +14,12 @@ export class AllowrewardsComponent implements OnInit {
   
   constructor(private restService: RestService) { 
     this.restService.getAssignments('unapproved').subscribe( 
-      arr => this.activityList = arr,
+      arr => {
+        for (let a of arr) {
+          a.active ? delete a.active : console.log('deleted property'); // Nodig omdat er verkeerde data was opgeslagen
+          a.assignment[0] ? this.activityList.push(a) : console.log('no assignment'); // ""
+        }
+      },
       err => console.log('Error!', err),
       () => console.log(this.activityList) ); // TODO! Console.log(this.activityList) verwijderen als pagina klaar is
   }
