@@ -60,7 +60,8 @@ export class AllowrewardsComponent implements OnInit {
       width: 350
     }).then((result) => {
       if (result.value) {
-        let body = { assignmentId: activity.assignmentid, status: (action === 'confirm' ? 2 : action === 'deny' ? 3 : 1) };
+        this.activityList.splice( this.activityList.indexOf(activity), 1 );
+        let body = { assignmentId: activity.id, status: (action === 'confirm' ? 2 : action === 'deny' ? 3 : 1) };
         this.restService.updateAssignmentStatus(body);
         swal(
           ( action === 'confirm' ? 'Bevestigd!' : action === 'deny' ? 'Afgewezen!' : null),
