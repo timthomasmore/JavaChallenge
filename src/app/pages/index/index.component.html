@@ -1,35 +1,36 @@
 <div class="row">
+  <div class="col-md-12 animated fadeIn">
+  <h1>Informatie over de gehele applicatie</h1>
+  </div>
   <div class="col-md-4 animated fadeIn">
     <div class="card card-block tip-card">
       <div class="tip-msg">
-        <h3>Gebruikers</h3>
-        <span>{{ totalUsers }} gebruikers</span>
+        <h3>Totaal aantal gebruikers</h3>
       </div>
-      <button class="tip-ico tip-ico-primary">
-        <i class="fa fa-group fa-fw"></i>
-      </button>
+      <div class="tip-ico tip-ico-primary">
+        {{ totalUsers }}
+      </div>
     </div>
   </div>
   <div class="col-md-4 animated fadeIn">
     <div class="card card-block tip-card">
       <div class="tip-msg">
-        <h3>Gescoorde punten</h3>
-        <span>{{totalScoredPoints}} punten</span>
+        <h3>Totaal gescoorde punten</h3>
       </div>
-      <button class="tip-ico tip-ico-info">
-        <i class="fas fa-star"></i>
-      </button>
+        <div class="tip-ico tip-ico-info">
+          {{totalScoredPoints}}
+      </div>
+
     </div>
   </div>
   <div class="col-md-4 animated fadeIn">
     <div class="card card-block tip-card">
       <div class="tip-msg">
-        <h3>Gekochte rewards</h3>
-        <span>{{totalBoughtRewards}} rewards</span>
+        <h3>Totaal gekochte rewards</h3>
       </div>
-      <button class="tip-ico tip-ico-success">
-        <i class="far fa-gem"></i>
-      </button>
+      <div class="tip-ico tip-ico-success">
+        {{totalBoughtRewards}}
+      </div>
     </div>
   </div>
   <div class="col-md-12">

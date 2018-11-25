@@ -104,7 +104,7 @@ export class ProfileComponent implements OnInit {
   this.points.sort(function(a, b) { return a.date.getTime() - b.date.getTime(); } );
   for (let i = 0; i < this.points.length; i++) {
     if ( this.points[i].date > new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 12, this.currentDate.getDate() ) ) {
-    this.shownData[this.points[i].date.getMonth() + 1] += this.points[i].points;
+    this.shownData[this.points[i].date.getMonth() +1] += this.points[i].points;
     }
   }
 
@@ -114,7 +114,7 @@ export class ProfileComponent implements OnInit {
       xdd.push(this.shownData[y[0]]);
     }
 
-    this.LineOption = this.chartsService.getLineOption(xdd, xaxDate);
+    this.LineOption = this.chartsService.getLineOption(xdd.reverse(), xaxDate.reverse());
 }
 
   initRewardsData(d) {
