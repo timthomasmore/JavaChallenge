@@ -84,7 +84,7 @@ export class RestService {
 
   getUserAllAssignments(){
     const body = {
-      userid: jwt_decode( localStorage.getItem('id_token') )['sub']
+      id: jwt_decode( localStorage.getItem('id_token') )['sub']
     };
     return this.http.get<any>(this.ROOT_URL + 'assignments/userallassignments/', body);
   }
