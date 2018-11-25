@@ -10,7 +10,7 @@ export class SidebarComponent implements OnInit {
 
   @Input() userData;
 
-  points = [];
+  points = {};
 
   recentRewards = [];
   rewardsInfo = [];
@@ -33,11 +33,9 @@ export class SidebarComponent implements OnInit {
     //});
     //this.restService.getUserAverage().subscribe( d => {this.points['average'] = d; console.log(d)});
 
-    this.restService.getProfileData().subscribe( d => {this.points['average'] = d.average;
-    this.points['total'] = d.totalLifetime;
-    this.points['currentMonth'] = d.currentMonth;
-    this.points['previousMonth'] = d.previousMonth;
-    });
+    this.restService.getProfileData().subscribe(
+      (obj) => Object.keys(obj).forEach( key => this.points[key] = obj[key] ),
+      (err) => console.log(err) );
   }
 
   ngOnInit() { }

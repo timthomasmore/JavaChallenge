@@ -22,14 +22,24 @@ export class ActiviteitToevoegenComponent implements OnInit {
   }
 
   completeAssignment(act, desc) {
-    (desc.length === 0) ? this.alert2Error() : this.restService.completeAssignment(act, desc);
+    (desc.length === 0) ? this.alertError() : this.alertConfirm(act, desc);
   }
 
-  alert2Error() {
+  alertError() {
     swal({
       type: 'error',
-      title: 'Oops...',
+      title: 'Oeps...',
       text: 'Gelieve een korte verduidelijking in te vullen!',
+    });
+  }
+
+  alertConfirm(act, desc) {
+    this.restService.completeAssignment(act, desc);
+
+    swal({
+      type: 'success',
+      title: 'Verstuurd!',
+      text: 'De inzending is verstuurd! Je verzoek wordt nog behandeld door een administrator.',
     });
   }
 }
