@@ -40,4 +40,11 @@ export class ShopComponent implements OnInit {
     this.modal = item;
     document.getElementById('confirmButton').click();
   }
+
+  pageReload() {
+    //TIJDELIJKE FIX OMDAT HET AANTAL PUNTEN IN HET GEBRUIKERS PROFIEL NOG NIET
+    //UPDATE NA HET KOPEN VBAN EEN ITEM
+    //MOGELIJKE FIX? ENKEL DIE COMPONENT HERLADEN
+    location.reload();
+  }
 }

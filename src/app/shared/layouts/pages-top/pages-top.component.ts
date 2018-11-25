@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { GlobalService } from '../../services/global.service';
-import {AuthService} from "../../services/auth.service";
-import {ChartsService} from '../../services/charts.service';
+import {AuthService} from '../../services/auth.service';
 import {RestService} from '../../services/rest.service';
 
 @Component({
