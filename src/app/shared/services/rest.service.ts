@@ -86,6 +86,7 @@ export class RestService {
     const body = {
       id: jwt_decode( localStorage.getItem('id_token') )['sub']
     };
-    return this.http.get<any>(this.ROOT_URL + 'assignments/userallassignments/', body);
+    console.log(body);
+    return this.http.get<any>(this.ROOT_URL + 'assignments/userallassignments', body);
   }
 }

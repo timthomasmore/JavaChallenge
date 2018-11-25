@@ -28,11 +28,12 @@ export class AuthService {
   private setSession(authResult) {
     const expiresAt = moment().add(authResult.expiresIn, 'second');
 
+    console.log(authResult.idToken);
+
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
     localStorage.setItem('permissions', authResult.permissions);
     this.permissionArray = localStorage.getItem('permissions').split(',');
-    console.log(this.permissionArray);
   }
 
   logout() {
