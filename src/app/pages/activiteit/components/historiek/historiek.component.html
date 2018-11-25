@@ -3,12 +3,12 @@
     <div class="card card-block tip-card">
       <div class="tip-msg">
         <h3>{{a.assignment[0]?.credits}} punten</h3>
-        <span>Geef een lezing over Angular 6</span>
+        <span>{{a.assignment[0]?.name}}</span>
       </div>
       <button class="tip-ico" [ngClass]="{'tip-ico-warning': a.status==1, 'tip-ico-success': a.status==2, 'tip-ico-danger': a.status==3}">
         <i class="fas fa-spinner" *ngIf="a.status===1"></i>
-        <i class="fas fa-check" *ngIf="a.status===2">></i>
-        <i class="fas fa-ban" *ngIf="a.status===3">></i>
+        <i class="fas fa-check" *ngIf="a.status===2"></i>
+        <i class="fas fa-ban" *ngIf="a.status===3"></i>
       </button>
     </div>
   </div>
