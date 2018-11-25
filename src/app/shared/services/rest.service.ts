@@ -35,11 +35,6 @@ export class RestService {
     return this.http.get<any>(this.ROOT_URL + 'users/totalredeemed' );
   }
 
-  getMonthlyRewards() {
-    const user_id = jwt_decode( localStorage.getItem('id_token') )['sub'];
-    return this.http.get<any>(this.ROOT_URL + 'users/monthly/' + user_id);
-  }
-
   completeAssignment(as, desc) {
     const body = {
       assignmentid: as._id,
@@ -72,5 +67,13 @@ export class RestService {
     };
     return this.http.post(this.ROOT_URL + 'users/redeem', body,
       {responseType: 'text'});
+  }
+
+  getTotalEarned() {
+    return this.http.get<any>(this.ROOT_URL + 'users/totalearned');
+  }
+
+  getMonthlyEarned(){
+    return this.http.get<any>(this.ROOT_URL + 'users/monthlyearned');
   }
 }
