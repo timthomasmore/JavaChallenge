@@ -8,6 +8,12 @@ export class ChartsService {
   customData = [];
 
   constructor() {
+
+    //overwrite baroptiondata
+    let months = ['dec','nov','oct','sept','aug','jul','jun','may','apr','mar','feb','jan','dec','nov','oct','sept','aug','jul','jun','may','apr','mar','feb'];
+    let month = new Date().getMonth();
+    this.BarOptionCustom.xAxis[0].data = months.splice(11-month,22-month);
+
     for (let i = 0; i < 100; i++) {
       this.xAxisData.push('Type ' + i);
       this.data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
@@ -209,6 +215,8 @@ export class ChartsService {
     for (let i = 0; i < args.length; i++) {
       this.customData.push(args[i]);
     }
+
+    console.log(this.BarOptionCustom.xAxis[0].data);
     return this.BarOptionCustom;
   }
 }

@@ -24,10 +24,9 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.restService.getTotalUsers().subscribe(response => this.totalUsers = Object.values(response));
-    this.monthlyPoints = [10, 52, 200, 334, 500, 330, 500, 600, 500, 250, 389, 829]; // Te vervangen door api call
     this.restService.getMonthlyEarned().subscribe(response => console.log(response));
-    this.restService.getMonthlyEarned().subscribe(response => this.BarOption = this.chartsService.getBarOptionCustom(response)); // TODO! array plaatsen in grafiek
-    this.BarOption = this.chartsService.getBarOptionCustom(this.monthlyPoints);
+    this.restService.getMonthlyEarned().subscribe(response => this.BarOption = this.chartsService.getBarOptionCustom(response));
+    //this.BarOption = this.chartsService.getBarOptionCustom(this.monthlyPoints);
     this.AnimationBarOption = this.chartsService.getAnimationBarOption();
     this.restService.getTotalEarned().subscribe(response => this.totalScoredPoints = response);
     this.restService.getTotalRewards().subscribe(response => this.totalBoughtRewards = response);
