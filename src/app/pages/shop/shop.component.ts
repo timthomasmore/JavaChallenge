@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../../shared/services/rest.service';
+import { map } from "rxjs/operators";
+
 
 @Component({
   selector: 'app-shop',
@@ -26,8 +28,19 @@ export class ShopComponent implements OnInit {
 
   initShop() {
     this.restService.getRewards().subscribe(response => {this.shop = Object.values(response); });
-    //console.log(this.shop);
+    //this.restService.getRewards().
+    // subscribe(response => {map((result: Response) =>  result.json()); this.shop = this.json2array(response); });
+
   }
+
+/*  json2array(json) {
+    const result = [];
+    const keys = Object.keys(json);
+    keys.forEach(function(key) {
+      result.push(json[key]);
+    });
+    return result;
+  }*/
 
   buy(item) {
     this.restService.redeemReward(item._id).subscribe( res => this.confirmModal(item, res) );

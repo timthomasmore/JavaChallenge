@@ -30,11 +30,7 @@ import {ModalsComponent} from '../ui/components/modals/modals.component';
         RewardsComponent,
         ActivitiesComponent,
         AllowrewardsComponent,
-      NotificationComponent,
-      FileTreeComponent,
-      LoadingComponent,
-      ProgressBarComponent,
-      ModalsComponent
+
     ]
 })
 export class AdminModule { }

@@ -9,7 +9,7 @@ export class RestService {
   options = {
     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
   };
-  readonly ROOT_URL = 'http://localhost:1234/';
+  readonly ROOT_URL = 'https://blooming-harbor-61072.herokuapp.com/';
 
   constructor(private http: HttpClient) {
   }

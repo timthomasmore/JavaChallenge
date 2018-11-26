@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule
   ],
   declarations: [
-    LoginComponent
+    //LoginComponent
   ]
 })
 export class LoginModule { }

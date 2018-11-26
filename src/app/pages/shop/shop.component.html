@@ -9,13 +9,13 @@
   </div>
 
 <div class="col-md-2 column productbox" *ngFor="let item of shop">
-  <img src="{{item.photo}}" class="productimage img-responsive" (click)="openModal(item)">
-  <div class="producttitle">{{item.name}}</div>
+  <img src="{{item?.photo}}" class="productimage img-responsive" (click)="openModal(item)">
+  <div class="producttitle">{{item?.name}}</div>
   <div class="productprice">
     <div class="pull-right">
       <a class="btn btn-danger btn-sm" role="button" (click)="buy(item)">KOOP</a>
     </div>
-    <div class="pricetext">Punten: {{item.credits}}</div>
+    <div class="pricetext">Punten: {{item?.credits}}</div>
   </div>
 </div>
 
@@ -26,13 +26,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          <h4 class="modal-title" id="myModalLabel">{{modal.name}}</h4>
+          <h4 class="modal-title" id="myModalLabel">{{modal?.name}}</h4>
         </div>
         <div class="modal-body">
-          <img src="{{modal.photo}}" class="img-responsive">
-          {{modal.description}}
+          <img src="{{modal?.photo}}" class="img-responsive">
+          {{modal?.description}}
           <hr />
-          <div class="pricetext">Punten: {{modal.credits}}</div>
+          <div class="pricetext">Punten: {{modal?.credits}}</div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -48,7 +48,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-          <h4 class="modal-title" id="confirmModalLabel">{{modal.name}}</h4>
+          <h4 class="modal-title" id="confirmModalLabel">{{modal?.name}}</h4>
         </div>
         <div class="modal-body">
           {{res}}

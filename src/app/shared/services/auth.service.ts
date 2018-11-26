@@ -11,7 +11,7 @@ export class AuthService {
 
   permissionArray = [];
 
-  readonly ROOT_URL = 'http://localhost:1234/';
+  readonly ROOT_URL = 'https://blooming-harbor-61072.herokuapp.com/';
 
   constructor(private http: HttpClient, private router: Router) {
   }
